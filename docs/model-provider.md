@@ -2,6 +2,8 @@
 
 The projects use a narrow application-facing adapter rather than embedding model-server administration into application code.
 
+The recorded model identity is [NVIDIA Nemotron 3.5 Lightning 30B-A3B BF16](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16). Review the current model card and license before downloading or using the weights. The companion repository does not distribute them.
+
 Default examples expect:
 
 - base URL: `http://127.0.0.1:8100` when an eval runs on the host;
@@ -25,4 +27,3 @@ A successful network response is not enough. For each candidate provider or mode
 6. the same frozen cases and scorer are used for comparison.
 
 Record the model root, served alias, server version, decoding settings, date, cases, raw results, and limitations. Friendly aliases are not immutable evidence identities.
-

@@ -29,7 +29,7 @@ docker build --target test -t build-ai-home-lab-test .
 docker run --rm build-ai-home-lab-test
 ```
 
-The recorded behavioral evidence used NVIDIA Nemotron 3.5 Lightning 30B-A3B BF16 behind an OpenAI-compatible endpoint. The software boundary is provider-portable, but another model, server, prompt, or decoding configuration creates new evidence rather than reproducing the recorded result.
+The recorded behavioral evidence used [NVIDIA Nemotron 3.5 Lightning 30B-A3B BF16](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16) behind an OpenAI-compatible endpoint. The software boundary is provider-portable, but another model, server, prompt, or decoding configuration creates new evidence rather than reproducing the recorded result. Model weights are not included and remain governed by their own license; the eventual repository code license will not replace or extend the model license.
 
 ## Evidence and limits
 
@@ -45,7 +45,6 @@ The recorded counts are small, bounded experiments—not general accuracy, secur
 
 ## Repository status
 
-This is a local release-staging repository. The intended book-aligned tag is `book-v1.0.0`, but the public remote, license, final commit, and clean-checkout reproduction are not yet approved. Until a license is added, the files are not licensed for redistribution.
+This is a local release-staging repository. The projects have been reproduced from a clean local clone, but the public remote, license, final edition commit, and `book-v1.0.0` tag are still pending. After the public repository exists, repeat the clean-clone reproduction from the public tag. Until a license is added, the files are not licensed for redistribution.
 
 The book manuscript, cover, diagrams, screenshots, review reports, and publishing files are not part of this repository.
-
