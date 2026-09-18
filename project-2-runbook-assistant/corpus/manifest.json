@@ -1,0 +1,31 @@
+{
+  "corpus_id": "book3-project2-original-runbooks",
+  "version": "2026-09-17.1",
+  "rights": "Original synthetic runbook text created for this experiment.",
+  "documents": [
+    {
+      "id": "storage-pool",
+      "file": "storage-pool.md",
+      "version": "1.0",
+      "sha256": "dcafcff07a60f51a7e8fb0ab9db425f71cdc64aa07291518116ace11eaa1f561"
+    },
+    {
+      "id": "reverse-proxy",
+      "file": "reverse-proxy.md",
+      "version": "1.0",
+      "sha256": "5d65d5b38d83d5424246c3c8b7ff850e4880b109fa6f43a97e16df4a27be901b"
+    },
+    {
+      "id": "backup-service",
+      "file": "backup-service.md",
+      "version": "1.0",
+      "sha256": "4c63de4a2c3fdd54ba1f485871c91384cb5ff823a291e9a7a7a67e2d87937e5b"
+    },
+    {
+      "id": "identity-provider",
+      "file": "identity-provider.md",
+      "version": "1.0",
+      "sha256": "c751bb265354785a533ae2ff77aab4d7d686d857236aa64dd3c6d40f603ace60"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+services:
+  sandbox-target:
+    environment:
+      CONFIG_PATH: /app/sandbox/candidates/baseline.json

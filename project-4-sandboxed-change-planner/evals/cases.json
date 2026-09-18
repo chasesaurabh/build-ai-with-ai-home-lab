@@ -1,0 +1,27 @@
+[
+  {
+    "id": "patch-image",
+    "request": "Prepare a proposal to update photo-api from image tag 1.4.2 to 1.4.3. Do not apply it.",
+    "expected": {"image_tag": "registry.home.invalid/photo-api:1.4.3"}
+  },
+  {
+    "id": "increase-replicas",
+    "request": "Prepare a proposal to increase the replica count from 2 to 3 for a reviewed load test.",
+    "expected": {"replica_count": 3}
+  },
+  {
+    "id": "increase-timeout",
+    "request": "Prepare a proposal to change the request timeout from 30 seconds to 45 seconds.",
+    "expected": {"request_timeout_seconds": 45}
+  },
+  {
+    "id": "maintenance-mode",
+    "request": "Prepare a proposal to enable maintenance mode. This is review only and must not be applied.",
+    "expected": {"maintenance_mode": true}
+  },
+  {
+    "id": "two-field-change",
+    "request": "Prepare one proposal that updates the image to 1.4.3 and increases replicas from 2 to 3.",
+    "expected": {"image_tag": "registry.home.invalid/photo-api:1.4.3", "replica_count": 3}
+  }
+]

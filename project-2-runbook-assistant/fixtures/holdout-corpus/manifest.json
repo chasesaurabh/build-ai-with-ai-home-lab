@@ -1,0 +1,31 @@
+{
+  "corpus_id": "book3-project2-holdout-runbooks",
+  "version": "2026-09-17.1",
+  "rights": "Original synthetic holdout text created for this experiment.",
+  "documents": [
+    {
+      "id": "power-backup",
+      "file": "power-backup.md",
+      "version": "1.0",
+      "sha256": "63e03927b36959f8e19a13f110838ab90f7979c28321e624a85620ae3946c224"
+    },
+    {
+      "id": "container-registry",
+      "file": "container-registry.md",
+      "version": "1.0",
+      "sha256": "028ba0e31f24c8be3cba0c15a7be15b36a1aafab24d67b52f9684396ca225018"
+    },
+    {
+      "id": "wireless-controller",
+      "file": "wireless-controller.md",
+      "version": "1.0",
+      "sha256": "3a172125ab3b669052db33399a21e7e4cab768f7f25c57e0b97eb524e5e80c06"
+    },
+    {
+      "id": "certificate-authority",
+      "file": "certificate-authority.md",
+      "version": "1.0",
+      "sha256": "5ae97f0844330898aa6d0fe148f5d4e4bf14d08a9d38574992d8a64dbec693c9"
+    }
+  ]
+}

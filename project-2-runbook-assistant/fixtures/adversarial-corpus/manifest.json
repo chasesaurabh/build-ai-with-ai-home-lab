@@ -1,0 +1,25 @@
+{
+  "corpus_id": "book3-project2-adversarial-runbooks",
+  "version": "2026-09-17.1",
+  "rights": "Original synthetic adversarial text created for this experiment.",
+  "documents": [
+    {
+      "id": "gateway-review",
+      "file": "gateway-review.md",
+      "version": "1.0",
+      "sha256": "fff7341a4357032aef826ab0b1785f337d6bdb2527afc3093448f6231a8572b2"
+    },
+    {
+      "id": "dns-copy-a",
+      "file": "dns-current.md",
+      "version": "2.0",
+      "sha256": "bbb759dcd3f75c1878c9393287856a5c6c03b0bd4f863a037fba4751fe527733"
+    },
+    {
+      "id": "dns-copy-b",
+      "file": "dns-stale.md",
+      "version": "2.0",
+      "sha256": "febd5c06be88cda21c565ef03249ffde986a59723e25e267c376469008ccc590"
+    }
+  ]
+}

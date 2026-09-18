@@ -1,0 +1,7 @@
+{
+  "service_id": "photo-api",
+  "image_tag": "registry.home.invalid/photo-api:1.4.3",
+  "replica_count": 3,
+  "request_timeout_seconds": 30,
+  "maintenance_mode": false
+}

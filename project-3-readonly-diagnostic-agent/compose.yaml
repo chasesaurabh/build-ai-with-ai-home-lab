@@ -1,0 +1,22 @@
+services:
+  diagnostic-api:
+    build:
+      context: .
+      target: runtime
+    environment:
+      FIXTURE_DIR: /app/fixtures
+      MODEL_BASE_URL: http://host.docker.internal:8100
+      MODEL_ID: nemotron-35-lightning
+      MODEL_TIMEOUT_SECONDS: "30"
+      MAX_TOOL_CALLS: "4"
+      MAX_RUN_SECONDS: "30"
+    ports:
+      - "127.0.0.1:18083:8000"
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: "no"

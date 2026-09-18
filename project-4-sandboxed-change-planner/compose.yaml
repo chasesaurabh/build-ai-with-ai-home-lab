@@ -1,0 +1,17 @@
+services:
+  sandbox-target:
+    build:
+      context: .
+      target: sandbox-runtime
+    environment:
+      CONFIG_PATH: /app/sandbox/candidates/good.json
+    ports:
+      - "127.0.0.1:18084:8000"
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: "no"

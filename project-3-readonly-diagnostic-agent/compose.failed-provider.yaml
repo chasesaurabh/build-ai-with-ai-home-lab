@@ -1,0 +1,5 @@
+services:
+  diagnostic-api:
+    environment:
+      MODEL_BASE_URL: http://host.docker.internal:65534
+      MODEL_TIMEOUT_SECONDS: "2"

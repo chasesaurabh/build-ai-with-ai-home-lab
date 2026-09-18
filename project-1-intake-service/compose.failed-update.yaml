@@ -1,0 +1,5 @@
+services:
+  intake-api:
+    environment:
+      MODEL_BASE_URL: http://host.docker.internal:1
+      MODEL_TIMEOUT_SECONDS: "1"

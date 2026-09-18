@@ -1,0 +1,20 @@
+services:
+  intake-api:
+    build:
+      context: .
+      target: runtime
+    environment:
+      APP_ADAPTER: local
+      MODEL_BASE_URL: http://host.docker.internal:8100
+      MODEL_ID: nemotron-35-lightning
+      MODEL_TIMEOUT_SECONDS: "30"
+    ports:
+      - "127.0.0.1:18081:8000"
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    restart: "no"

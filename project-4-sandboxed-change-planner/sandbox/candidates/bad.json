@@ -1,0 +1,7 @@
+{
+  "service_id": "photo-api",
+  "image_tag": "public.invalid/photo-api:latest",
+  "replica_count": 99,
+  "request_timeout_seconds": 30,
+  "maintenance_mode": false
+}
