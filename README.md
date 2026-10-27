@@ -4,6 +4,12 @@ This repository contains the four runnable reference projects for *Build AI with
 
 The examples are deliberately small. They use synthetic fixtures, closed schemas, deterministic policy, visible failure behavior, and disposable deployment targets. None of the applications can repair a service, run an arbitrary command, or silently apply a production change.
 
+[Read the book on Amazon](https://www.amazon.com/dp/B0HKGGXJCF).
+
+![Recorded deterministic structured-intake evaluation](docs/images/m3-preview.jpg)
+
+This is a rendering of actual deterministic development-evaluation output from Windows and CPython 3.12.14 on October 26, 2026, not an application UI or model result. All twelve fixed development cases matched their rubric in this run. Other model and holdout observations remain in [evidence and reproduction](docs/evidence-and-reproduction.md).
+
 ## Projects
 
 | Project | Model-owned choice | Application-owned boundary | Explicitly absent |
@@ -50,3 +56,7 @@ This is the public companion repository for the book. The edition-aligned releas
 The companion code is available under the [MIT License](LICENSE). Model weights, third-party packages, and linked materials remain subject to their own terms.
 
 The book manuscript, cover, diagrams, screenshots, review reports, and publishing files are not part of this repository.
+
+## Choose your next project
+
+[Start here: choose a Practical AI Home Lab book](https://github.com/chasesaurabh/give-your-home-labs-ai-a-memory/blob/codex/memory-companion/docs/start-here.md), or [browse the series on Amazon](https://www.amazon.com/dp/B0HP7F73K4). Each book can be read on its own.

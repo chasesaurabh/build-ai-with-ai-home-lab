@@ -14,5 +14,5 @@ For ordinary correctness problems that do not expose sensitive information, open
 
 ## Supported release
 
-Only the book-aligned `book-v1.0.0` release will be supported initially. The tag and public URL are pending.
+The book-aligned `book-v1.0.0` tag is available in this public repository. Use that immutable edition to reproduce the book examples; current-branch documentation can change.
 

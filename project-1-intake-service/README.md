@@ -15,7 +15,7 @@ docker run --rm build-ai-home-lab-project1-test
 
 ## Run the deterministic eval
 
-From an environment with `requirements-dev.txt` installed:
+From an environment with `requirements-dev.txt` installed, create the ignored `results` directory first (`mkdir results` if it does not exist):
 
 ```text
 python -m evals.run_evals --adapter deterministic --output results/project1-deterministic.json
