@@ -1,0 +1,16 @@
+{
+  "body": {
+    "category": "availability",
+    "urgency": "high",
+    "affected_system": "backup service",
+    "evidence_requests": [
+      "service_status",
+      "recent_logs"
+    ],
+    "next_step": "escalate",
+    "rationale": "The request names backup service and was classified as availability with condition outage; deterministic policy selected escalate.",
+    "requires_human_review": true
+  },
+  "seconds": 11.583763,
+  "status": 200
+}

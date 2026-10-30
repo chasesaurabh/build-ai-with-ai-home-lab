@@ -23,7 +23,7 @@ class StubAdapter:
 
 def proposal() -> dict[str, Any]:
     return {
-        "changes": [{"field": "replica_count", "before": 2, "after": 3}],
+        "changes": [{"field": "replica_count", "after": 3}],
     }
 
 

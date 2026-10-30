@@ -1,0 +1,48 @@
+{
+  "checked_date": "2026-10-30",
+  "scope": "Actual Linux-container tests and PowerShell7 synthetic first-runs; dependency-refresh working tree.",
+  "results": [
+    {
+      "script": "first-run.ps1",
+      "test_summary": [
+        "52 passed in 6.02s"
+      ],
+      "walkthrough_summary": [
+        "PASS: tests, liveness, readiness, request, rejection, and restart."
+      ],
+      "full_private_log_sha256": "94fa071f20e9dc93b20ee792ac8f5125b9c764d94fe1658f03a7fd2fd7ccf65b"
+    },
+    {
+      "script": "runbook-first-run.ps1",
+      "test_summary": [
+        "43 passed in 2.90s"
+      ],
+      "walkthrough_summary": [
+        "PASS: corpus tests, search, abstention, provider failure, input rejection, and restart."
+      ],
+      "full_private_log_sha256": "7171bd9ed943be0cd951cc48b84e9862f116f969806cab550d3a9601cf25578c"
+    },
+    {
+      "script": "diagnostic-first-run.ps1",
+      "test_summary": [
+        "56 passed in 0.41s"
+      ],
+      "walkthrough_summary": [
+        "PASS: tests, fixed observations, current-run citations, provider failure, input rejection, restart, stable hashes and fresh IDs."
+      ],
+      "full_private_log_sha256": "9ffd4a40650dffb0f3fec30d765240eb52312a43762e5eba21eba9865797206f"
+    },
+    {
+      "script": "planner-first-run.ps1",
+      "test_summary": [
+        "44 passed in 1.05s"
+      ],
+      "walkthrough_summary": [
+        "PASS: review package, hashes, disposable candidate, restart, invalid-candidate rejection, and exact configuration restoration. Artifacts: [local output directory omitted]."
+      ],
+      "full_private_log_sha256": "70320fa9c98b7c603733d747f3978dde5f5b62b3ae8faf6ee2d95536005c28aa"
+    }
+  ],
+  "limits": "Build cache allowed. Not an offline or cache-free reproduction, nor a public-tag checkout.",
+  "public_export_note": "Only the absolute local artifact directory was omitted from the extracted planner success line. Test counts/outcomes and full original private-log hashes are unchanged."
+}

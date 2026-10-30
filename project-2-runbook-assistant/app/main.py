@@ -13,7 +13,7 @@ from app.adapters import (
     AnswerAdapterUnavailableError,
     NemotronAnswerAdapter,
 )
-from app.models import GroundedAnswer, HealthResponse, ReadinessResponse, RunbookQuestion
+from app.models import GroundedAnswer, HealthResponse, ReadinessResponse, RunbookQuestion, RetrievalResponse
 from app.service import GroundedAnswerService, RetrievalService
 
 
@@ -27,10 +27,8 @@ def create_app(
         timeout_seconds=float(os.getenv("MODEL_TIMEOUT_SECONDS", "30")),
     )
     selected_corpus = corpus_dir or Path(os.getenv("CORPUS_DIR", "/app/corpus"))
-    service = GroundedAnswerService(
-        RetrievalService(selected_corpus),
-        selected_adapter,
-    )
+    retrieval = RetrievalService(selected_corpus)
+    service = GroundedAnswerService(retrieval, selected_adapter)
 
     application = FastAPI(title="Project 2 Runbook Assistant", version="0.1.0")
 
@@ -60,6 +58,11 @@ def create_app(
             raise HTTPException(status_code=504, detail=str(exc)) from exc
         except (AnswerAdapterResponseError, AnswerAdapterError) as exc:
             raise HTTPException(status_code=502, detail=str(exc)) from exc
+
+    @application.post("/v1/search", response_model=RetrievalResponse)
+    def search(request: RunbookQuestion) -> RetrievalResponse:
+        """Inspectable lexical retrieval, independent of model availability."""
+        return retrieval.search(request)
 
     return application
 

@@ -1,0 +1,13 @@
+# Captured Linux x86_64 / Python 3.12 environment; not a cross-platform hash lock.
+# Re-audit and run the tests before changing pins. See docs/dependencies.md.
+annotated-types==0.8.0
+iniconfig==2.3.1
+packaging==26.3
+pip==26.2.1
+pluggy==1.7.0
+pydantic==2.13.5
+pydantic_core==2.46.5
+Pygments==2.21.0
+pytest==9.1.1
+typing-inspection==0.4.4
+typing_extensions==4.16.0

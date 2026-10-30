@@ -27,6 +27,7 @@ class StubAdapter:
     def answer(self, question: str, hits: list[Any]) -> dict[str, Any]:
         self.calls += 1
         return {
+            "answerable": True,
             "answer": "Collect the storage status, pool summary, device identifier, and recent logs.",
             "citation_ids": ["storage-pool#evidence-collect"],
         }
@@ -122,4 +123,15 @@ def test_invalid_input_is_rejected_before_adapter_call() -> None:
         json={"question": "short", "unexpected": True},
     )
     assert response.status_code == 422
+    assert adapter.calls == 0
+
+
+def test_search_is_available_without_model_and_never_calls_it():
+    adapter = StubAdapter(ready=False)
+    client = TestClient(create_app(adapter, CORPUS_DIR))
+    assert client.get('/ready').status_code == 503
+    response = client.post('/v1/search', json={'question': 'What evidence should I collect for degraded storage redundancy?'})
+    assert response.status_code == 200
+    assert response.json()['has_evidence'] is True
+    assert 'storage-pool#evidence-collect' in [hit['passage_id'] for hit in response.json()['hits']]
     assert adapter.calls == 0

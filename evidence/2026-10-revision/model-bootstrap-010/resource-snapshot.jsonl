@@ -1,0 +1,2 @@
+{"BlockIO":"106kB / 2.5GB","CPUPerc":"155.76%","Container":"1caa7b632bd869514cc1bfd10d3b66e4fc6e5571e84b2b6f47b60897bbf7d83d","ID":"1caa7b632bd8","MemPerc":"90.96%","MemUsage":"5.458GiB / 6GiB","Name":"build-ai-starter-model","NetIO":"2.69GB / 59.1MB","PIDs":"60"}
+{"BlockIO":"23.8MB / 0B","CPUPerc":"0.12%","Container":"518ddab5103479bc3af34c2af0932d1e758eb0c898c11c781b36112ab27e70e9","ID":"518ddab51034","MemPerc":"0.08%","MemUsage":"54MiB / 62.69GiB","Name":"build-ai-starter-intake","NetIO":"4.33kB / 6.87kB","PIDs":"3"}

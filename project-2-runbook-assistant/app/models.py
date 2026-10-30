@@ -1,6 +1,6 @@
 from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 
 class RunbookQuestion(BaseModel):
@@ -15,6 +15,9 @@ class RetrievalHit(BaseModel):
     passage_id: str
     document_title: str
     document_version: str
+    source_file: str
+    source_sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
+    passage_sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
     section_title: str
     excerpt: str
     score: float = Field(gt=0)
@@ -31,8 +34,9 @@ class RetrievalResponse(BaseModel):
 class ModelGroundedAnswer(BaseModel):
     model_config = ConfigDict(extra="forbid", str_strip_whitespace=True)
 
+    answerable: bool = Field(strict=True)
     answer: str = Field(min_length=20, max_length=800)
-    citation_ids: list[str] = Field(min_length=1, max_length=3)
+    citation_ids: list[str] = Field(max_length=3)
 
     @field_validator("citation_ids")
     @classmethod
@@ -40,6 +44,12 @@ class ModelGroundedAnswer(BaseModel):
         if len(value) != len(set(value)):
             raise ValueError("citation identifiers must be unique")
         return value
+
+    @model_validator(mode="after")
+    def answerability_matches_citations(self):
+        if self.answerable != bool(self.citation_ids):
+            raise ValueError("Answerable results need citations; abstentions must have none.")
+        return self
 
 
 class GroundedAnswer(BaseModel):

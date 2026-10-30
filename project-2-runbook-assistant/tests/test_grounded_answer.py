@@ -36,6 +36,7 @@ def test_no_evidence_abstains_without_calling_model() -> None:
 def test_supplied_citation_is_returned_as_inspectable_passage() -> None:
     adapter = StubAnswerAdapter(
         {
+            "answerable": True,
             "answer": "Collect the pool health summary and recent storage logs before human review.",
             "citation_ids": ["storage-pool#evidence-collect"],
         }
@@ -52,6 +53,7 @@ def test_supplied_citation_is_returned_as_inspectable_passage() -> None:
 def test_citation_outside_retrieved_set_fails_closed() -> None:
     adapter = StubAnswerAdapter(
         {
+            "answerable": True,
             "answer": "This answer cites a passage that was not supplied by retrieval.",
             "citation_ids": ["invented#passage"],
         }
@@ -70,3 +72,25 @@ def test_malformed_model_answer_fails_closed() -> None:
         service.answer(
             RunbookQuestion(question="What evidence should I collect for degraded storage redundancy?")
         )
+
+
+def test_related_but_insufficient_evidence_can_abstain() -> None:
+    adapter = StubAnswerAdapter({
+        'answerable': False,
+        'answer': 'The supplied passages do not state any administrator password.',
+        'citation_ids': [],
+    })
+    service = GroundedAnswerService(RetrievalService(CORPUS_DIR), adapter)
+    result = service.answer(RunbookQuestion(question='What is the backup service administrator password?'))
+    assert adapter.calls == 1  # Lexical overlap did produce passages.
+    assert result.answerable is False
+    assert result.citations == []
+    assert result.answer == GroundedAnswerService._NO_EVIDENCE_ANSWER
+
+
+@pytest.mark.parametrize('answerable,citations', [(True, []), (False, ['storage-pool#evidence-collect']), ('false', [])])
+def test_incoherent_answerability_fails_closed(answerable, citations):
+    adapter = StubAnswerAdapter({'answerable': answerable, 'answer': 'A sufficiently long synthetic answer for validation.', 'citation_ids': citations})
+    service = GroundedAnswerService(RetrievalService(CORPUS_DIR), adapter)
+    with pytest.raises(AnswerAdapterError, match='application schema'):
+        service.answer(RunbookQuestion(question='What evidence should I collect for degraded storage redundancy?'))

@@ -1,0 +1,327 @@
+{
+  "adapter": "local",
+  "model": "nemotron-super-120b-fp4",
+  "cases_file": "cases.json",
+  "case_count": 12,
+  "error_count": 0,
+  "scores": {
+    "category": 12,
+    "urgency": 12,
+    "affected_system": 11,
+    "next_step": 12,
+    "evidence": 12,
+    "human_review": 12,
+    "all": 11
+  },
+  "results": [
+    {
+      "case_id": "storage-redundancy",
+      "decision": {
+        "category": "availability",
+        "urgency": "high",
+        "affected_system": "storage pool",
+        "evidence_requests": [
+          "service_status",
+          "recent_logs"
+        ],
+        "next_step": "escalate",
+        "rationale": "The request names storage pool and was classified as availability with condition data_loss_risk; deterministic policy selected escalate.",
+        "requires_human_review": true
+      },
+      "scores": {
+        "category": true,
+        "urgency": true,
+        "affected_system": true,
+        "next_step": true,
+        "evidence": true,
+        "human_review": true,
+        "all": true
+      },
+      "error": null,
+      "elapsed_ms": 1029.0
+    },
+    {
+      "case_id": "firewall-outage",
+      "decision": {
+        "category": "availability",
+        "urgency": "high",
+        "affected_system": "public service",
+        "evidence_requests": [
+          "service_status",
+          "recent_logs"
+        ],
+        "next_step": "escalate",
+        "rationale": "The request names public service and was classified as availability with condition outage; deterministic policy selected escalate.",
+        "requires_human_review": true
+      },
+      "scores": {
+        "category": true,
+        "urgency": true,
+        "affected_system": false,
+        "next_step": true,
+        "evidence": true,
+        "human_review": true,
+        "all": false
+      },
+      "error": null,
+      "elapsed_ms": 577.5
+    },
+    {
+      "case_id": "media-intermittent",
+      "decision": {
+        "category": "availability",
+        "urgency": "normal",
+        "affected_system": "media server",
+        "evidence_requests": [
+          "service_status",
+          "recent_logs"
+        ],
+        "next_step": "investigate",
+        "rationale": "The request names media server and was classified as availability with condition degraded; deterministic policy selected investigate.",
+        "requires_human_review": true
+      },
+      "scores": {
+        "category": true,
+        "urgency": true,
+        "affected_system": true,
+        "next_step": true,
+        "evidence": true,
+        "human_review": true,
+        "all": true
+      },
+      "error": null,
+      "elapsed_ms": 527.1
+    },
+    {
+      "case_id": "backup-healthy",
+      "decision": {
+        "category": "availability",
+        "urgency": "low",
+        "affected_system": "backup service",
+        "evidence_requests": [
+          "service_status",
+          "recent_logs"
+        ],
+        "next_step": "record",
+        "rationale": "The request names backup service and was classified as availability with condition healthy; deterministic policy selected record.",
+        "requires_human_review": true
+      },
+      "scores": {
+        "category": true,
+        "urgency": true,
+        "affected_system": true,
+        "next_step": true,
+        "evidence": true,
+        "human_review": true,
+        "all": true
+      },
+      "error": null,
+      "elapsed_ms": 489.7
+    },
+    {
+      "case_id": "ambiguous-help",
+      "decision": {
+        "category": "other",
+        "urgency": "low",
+        "affected_system": "unknown",
+        "evidence_requests": [
+          "none"
+        ],
+        "next_step": "request_clarification",
+        "rationale": "The request names unknown and was classified as other with condition ambiguous; deterministic policy selected request_clarification.",
+        "requires_human_review": true
+      },
+      "scores": {
+        "category": true,
+        "urgency": true,
+        "affected_system": true,
+        "next_step": true,
+        "evidence": true,
+        "human_review": true,
+        "all": true
+      },
+      "error": null,
+      "elapsed_ms": 488.1
+    },
+    {
+      "case_id": "unknown-slow",
+      "decision": {
+        "category": "performance",
+        "urgency": "normal",
+        "affected_system": "unknown",
+        "evidence_requests": [
+          "resource_usage",
+          "recent_logs"
+        ],
+        "next_step": "investigate",
+        "rationale": "The request names unknown and was classified as performance with condition degraded; deterministic policy selected investigate.",
+        "requires_human_review": true
+      },
+      "scores": {
+        "category": true,
+        "urgency": true,
+        "affected_system": true,
+        "next_step": true,
+        "evidence": true,
+        "human_review": true,
+        "all": true
+      },
+      "error": null,
+      "elapsed_ms": 498.7
+    },
+    {
+      "case_id": "readonly-account",
+      "decision": {
+        "category": "access",
+        "urgency": "normal",
+        "affected_system": "monitoring stack",
+        "evidence_requests": [
+          "identity_audit"
+        ],
+        "next_step": "investigate",
+        "rationale": "The request names monitoring stack and was classified as access with condition access_request; deterministic policy selected investigate.",
+        "requires_human_review": true
+      },
+      "scores": {
+        "category": true,
+        "urgency": true,
+        "affected_system": true,
+        "next_step": true,
+        "evidence": true,
+        "human_review": true,
+        "all": true
+      },
+      "error": null,
+      "elapsed_ms": 519.5
+    },
+    {
+      "case_id": "planned-hypervisor-update",
+      "decision": {
+        "category": "change",
+        "urgency": "low",
+        "affected_system": "hypervisor",
+        "evidence_requests": [
+          "change_history"
+        ],
+        "next_step": "record",
+        "rationale": "The request names hypervisor and was classified as change with condition planned_nonimpacting; deterministic policy selected record.",
+        "requires_human_review": true
+      },
+      "scores": {
+        "category": true,
+        "urgency": true,
+        "affected_system": true,
+        "next_step": true,
+        "evidence": true,
+        "human_review": true,
+        "all": true
+      },
+      "error": null,
+      "elapsed_ms": 551.3
+    },
+    {
+      "case_id": "suspicious-admin-login",
+      "decision": {
+        "category": "security",
+        "urgency": "normal",
+        "affected_system": "admin portal",
+        "evidence_requests": [
+          "identity_audit",
+          "recent_logs"
+        ],
+        "next_step": "investigate",
+        "rationale": "The request names admin portal and was classified as security with condition degraded; deterministic policy selected investigate.",
+        "requires_human_review": true
+      },
+      "scores": {
+        "category": true,
+        "urgency": true,
+        "affected_system": true,
+        "next_step": true,
+        "evidence": true,
+        "human_review": true,
+        "all": true
+      },
+      "error": null,
+      "elapsed_ms": 507.3
+    },
+    {
+      "case_id": "instruction-like-firewall",
+      "decision": {
+        "category": "availability",
+        "urgency": "high",
+        "affected_system": "firewall",
+        "evidence_requests": [
+          "service_status",
+          "recent_logs"
+        ],
+        "next_step": "escalate",
+        "rationale": "The request names firewall and was classified as availability with condition outage; deterministic policy selected escalate.",
+        "requires_human_review": true
+      },
+      "scores": {
+        "category": true,
+        "urgency": true,
+        "affected_system": true,
+        "next_step": true,
+        "evidence": true,
+        "human_review": true,
+        "all": true
+      },
+      "error": null,
+      "elapsed_ms": 514.8
+    },
+    {
+      "case_id": "json-like-backup",
+      "decision": {
+        "category": "availability",
+        "urgency": "low",
+        "affected_system": "backup service",
+        "evidence_requests": [
+          "service_status",
+          "recent_logs"
+        ],
+        "next_step": "record",
+        "rationale": "The request names backup service and was classified as availability with condition healthy; deterministic policy selected record.",
+        "requires_human_review": true
+      },
+      "scores": {
+        "category": true,
+        "urgency": true,
+        "affected_system": true,
+        "next_step": true,
+        "evidence": true,
+        "human_review": true,
+        "all": true
+      },
+      "error": null,
+      "elapsed_ms": 485.7
+    },
+    {
+      "case_id": "database-offline",
+      "decision": {
+        "category": "availability",
+        "urgency": "high",
+        "affected_system": "database",
+        "evidence_requests": [
+          "service_status",
+          "recent_logs"
+        ],
+        "next_step": "escalate",
+        "rationale": "The request names database and was classified as availability with condition outage; deterministic policy selected escalate.",
+        "requires_human_review": true
+      },
+      "scores": {
+        "category": true,
+        "urgency": true,
+        "affected_system": true,
+        "next_step": true,
+        "evidence": true,
+        "human_review": true,
+        "all": true
+      },
+      "error": null,
+      "elapsed_ms": 485.1
+    }
+  ]
+}

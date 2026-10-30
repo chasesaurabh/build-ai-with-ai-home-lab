@@ -5,13 +5,15 @@ services:
       target: runtime
     environment:
       FIXTURE_DIR: /app/fixtures
-      MODEL_BASE_URL: http://host.docker.internal:8100
-      MODEL_ID: nemotron-35-lightning
+      MODEL_BASE_URL: ${MODEL_BASE_URL:-http://host.docker.internal:8100}
+      MODEL_ID: ${MODEL_ID:?Set MODEL_ID to the exact ID returned by your provider}
       MODEL_TIMEOUT_SECONDS: "30"
       MAX_TOOL_CALLS: "4"
       MAX_RUN_SECONDS: "30"
     ports:
       - "127.0.0.1:18083:8000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     read_only: true
     tmpfs:
       - /tmp

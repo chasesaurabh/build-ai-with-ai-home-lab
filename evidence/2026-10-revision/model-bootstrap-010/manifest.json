@@ -1,0 +1,43 @@
+{
+  "run": "model-bootstrap-010",
+  "started_utc": "2026-10-30T17:28:47.4048822Z",
+  "finished_utc": "2026-10-30T17:31:36.8581171Z",
+  "result": "pass",
+  "fresh_model_volume": true,
+  "model": "qwen3:4b-instruct-2507-q4_K_M",
+  "server_image_id": "sha256:20d1bbfbabe1c97ba4b16301f08a20d8484bcf77047742a3cb71c613d8e12d0b",
+  "server_image_digests": [
+    "ollama/ollama@sha256:20d1bbfbabe1c97ba4b16301f08a20d8484bcf77047742a3cb71c613d8e12d0b"
+  ],
+  "application_image_id": "sha256:68fa34ef937689a134df32660c3e50e96befd960eb4a6236edaaf1da96d2343e",
+  "engine": {
+    "OSType": "linux",
+    "Architecture": "x86_64",
+    "NCPU": 24,
+    "MemTotal": 67310301184
+  },
+  "server_limits": {
+    "cpu_quota": 8,
+    "memory_bytes": 6442450944,
+    "extra_swap": 0,
+    "gpu_devices": 0,
+    "context_tokens": 4096
+  },
+  "case": "The backup service is offline.",
+  "case_count": 1,
+  "successful_requests": 2,
+  "scope": "One repeated compatibility/failure/recovery case, not accuracy or Projects2\u20134 quality.",
+  "source_state": "Precursor script before KeepRunning option; exact installed image/model and raw outcomes retained.",
+  "adapter_sha256": "95a2a5758345f7f9239142124bd84cfd5bb28af639d31d19f209b96a8894f5f8",
+  "files": {
+    "model-listing.json": "d3d183aec2d2554de0e9a393214d0a63552d5f352da11cf4c7a980a34542f964",
+    "model-loaded.json": "833a72359e3378d4ead7cf7befc550984df826740cf2975fc992972c6adc60a4",
+    "model-tags.json": "9476d1ecf72b9182a2e1d09bd68d71cf901ce012b7bbce51729440182ee090a5",
+    "provider-stopped.json": "bf5c456e76fd9a1a3c5d8efc4b025a764c1d1dc2a02d7b1b8aad9c280ee4cd34",
+    "request-after.json": "b7876c5475734081d0640bca2e648f58424161c3ef6bd8245fa0be512876bf10",
+    "request-before.json": "ad59bea36fceeb1e2ab1e33a915fa367d8ae2c5c93bf6b02d3f7d0b8244e3160",
+    "request-provider-stopped.json": "9d9f9bdd1e9d835b51332781e2ddf9b9386e958ee375a2cc773e7917bd57fb00",
+    "resource-snapshot.jsonl": "d3d3176a5b1ff7ccc2279da33e2ae13ff8fb04adabd03a5984331412b25b72f3",
+    "server-version.json": "b049c2c9ecc204832aa915b1b8332c6e482fa8eed2cbb33ab031cdc1f67c2fed"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "original_output_sha256": "037cfa6aeeae287c029d032c04e559a1114120acac118a44262947ce6302b4e1",
+  "original_manifest_sha256": "40765e184aabe737c14e98a034a1db0827e69f800464baf169545e9401b85c98",
+  "holdout_scope": "Known development replay; no new unseen holdout.",
+  "started_utc": "2026-10-30T17:06:32.191422+00:00",
+  "ended_utc": "2026-10-30T17:06:39.782101+00:00",
+  "scope": "Existing 12 development cases; no new holdout. Different underlying model from first-edition 30B. Sequential calls.",
+  "model": {
+    "id": "nemotron-super-120b-fp4",
+    "object": "model",
+    "created": 1793379992,
+    "owned_by": "vllm",
+    "root": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4",
+    "parent": null,
+    "max_model_len": 262144,
+    "permission": [
+      {
+        "id": "modelperm-acf630b5435b35ba",
+        "object": "model_permission",
+        "created": 1793379992,
+        "allow_create_engine": false,
+        "allow_sampling": true,
+        "allow_logprobs": true,
+        "allow_search_indices": false,
+        "allow_view": true,
+        "allow_fine_tuning": false,
+        "organization": "*",
+        "group": null,
+        "is_blocking": false
+      }
+    ]
+  },
+  "model_after": [
+    {
+      "id": "nemotron-super-120b-fp4",
+      "object": "model",
+      "created": 1793379999,
+      "owned_by": "vllm",
+      "root": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4",
+      "parent": null,
+      "max_model_len": 262144,
+      "permission": [
+        {
+          "id": "modelperm-b874c0fce81cd9b8",
+          "object": "model_permission",
+          "created": 1793379999,
+          "allow_create_engine": false,
+          "allow_sampling": true,
+          "allow_logprobs": true,
+          "allow_search_indices": false,
+          "allow_view": true,
+          "allow_fine_tuning": false,
+          "organization": "*",
+          "group": null,
+          "is_blocking": false
+        }
+      ]
+    }
+  ],
+  "application_files": {
+    "adapters.py": "95a2a5758345f7f9239142124bd84cfd5bb28af639d31d19f209b96a8894f5f8",
+    "main.py": "7486c84d8eb1a54bf0857a50fe5bbc55ff318b47d0fe758ba435eac3bcd4f028",
+    "models.py": "e5ee28e57fb243df810ed962e3a813b77f0dc38ae4a20a880a5eeebf3b75047a",
+    "service.py": "bed1099baf88b596b1fce455084a3561ffa6bdd762767a5835371003bd19b0ef",
+    "__init__.py": "44a67ce1c59da806b308cfd9e0c0f64037378ad6cd9521ba9a5e32c1c8090ebd"
+  },
+  "image_id": "sha256:b7bba3b704f04c0f71b3be113c9e4e248af7454b24a91b084c9d15b01ac8c43e",
+  "provider_version": {
+    "version": "0.30.0"
+  },
+  "summary": {
+    "case_count": 12,
+    "error_count": 0,
+    "scores": {
+      "category": 12,
+      "urgency": 12,
+      "affected_system": 12,
+      "next_step": 12,
+      "evidence": 12,
+      "human_review": 12,
+      "all": 12
+    }
+  },
+  "identity_limit": "Compares reported identity before/after; does not verify weight hashes. Listing timestamps and permission IDs can change per request.",
+  "reported_identity_stable": true,
+  "model_listing_stable": false,
+  "exit_code": 0
+}

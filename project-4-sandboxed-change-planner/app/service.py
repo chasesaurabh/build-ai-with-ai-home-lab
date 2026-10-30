@@ -12,4 +12,4 @@ class ModelBackedChangePlanningService:
 
     def prepare(self, request: ChangeRequest) -> ApprovalPackage:
         raw_proposal = self._adapter.propose(request.request, self._planner.source_config)
-        return self._planner.prepare(raw_proposal)
+        return self._planner.prepare_desired(raw_proposal)

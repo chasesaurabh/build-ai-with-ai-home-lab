@@ -64,6 +64,7 @@ def main() -> None:
                 "changed_fields": sorted(changed_fields),
                 "diff": package.unified_diff if package else None,
                 "risks": package.risks if package else [],
+                "package": package.model_dump(mode="json") if package else None,
                 "all": (
                     bool(package)
                     and expected_values

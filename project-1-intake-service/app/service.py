@@ -16,10 +16,8 @@ class IntakeService:
             raise AdapterResponseError("The adapter output violated the application schema.") from exc
 
         condition = assessment.condition
-        description = request.description.casefold()
-        if "degraded redundancy" in description or "disk alert" in description:
-            condition = "data_loss_risk"
-
+        # Policy maps validated facts; it must not secretly re-interpret raw
+        # description substrings (including negated or historical alerts).
         category = assessment.category
         category_by_condition = {
             "ambiguous": "other",

@@ -1,0 +1,7 @@
+{
+  "status": 503,
+  "seconds": 2.2945123,
+  "body": {
+    "detail": "The model provider is unavailable."
+  }
+}

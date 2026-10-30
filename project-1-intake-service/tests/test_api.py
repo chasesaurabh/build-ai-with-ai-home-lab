@@ -250,9 +250,9 @@ def test_application_owns_unambiguous_condition_categories() -> None:
         assert response.json()["category"] == category
 
 
-def test_application_escalates_explicit_degraded_redundancy() -> None:
+def test_application_escalates_validated_data_loss_risk() -> None:
     assessment = dict(VALID_ASSESSMENT)
-    assessment["condition"] = "degraded"
+    assessment["condition"] = "data_loss_risk"
     response = TestClient(create_app(StubAdapter(assessment))).post(
         "/v1/intake",
         json={"description": "The storage pool reports degraded redundancy after a disk alert."},
@@ -260,3 +260,29 @@ def test_application_escalates_explicit_degraded_redundancy() -> None:
     assert response.status_code == 200
     assert response.json()["urgency"] == "high"
     assert response.json()["next_step"] == "escalate"
+
+
+@pytest.mark.parametrize('description', [
+    'The storage pool is healthy; no disk alert is present.',
+    'The storage pool had degraded redundancy last month, but has fully recovered.',
+])
+def test_policy_does_not_reclassify_raw_substrings(description) -> None:
+    # A stub isolates policy from extraction quality. This does not claim that
+    # either actual adapter correctly interprets these descriptions.
+    assessment = dict(VALID_ASSESSMENT, condition='healthy')
+    response = TestClient(create_app(StubAdapter(assessment))).post(
+        '/v1/intake', json={'description': description})
+    assert response.status_code == 200
+    assert response.json()['urgency'] == 'low'
+    assert response.json()['next_step'] == 'record'
+
+
+@pytest.mark.parametrize('missing', ['MODEL_ID', 'MODEL_BASE_URL'])
+def test_local_mode_requires_explicit_configuration(monkeypatch, missing):
+    from app.adapters import adapter_from_environment
+    monkeypatch.setenv('APP_ADAPTER', 'local')
+    monkeypatch.setenv('MODEL_ID', 'synthetic-model')
+    monkeypatch.setenv('MODEL_BASE_URL', 'http://127.0.0.1:8100')
+    monkeypatch.delenv(missing)
+    with pytest.raises(ValueError, match='requires explicit'):
+        adapter_from_environment()

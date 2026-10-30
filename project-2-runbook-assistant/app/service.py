@@ -24,6 +24,9 @@ class RetrievalService:
                 passage_id=passage.passage_id,
                 document_title=passage.document_title,
                 document_version=passage.document_version,
+                source_file=passage.source_file,
+                source_sha256=passage.source_sha256,
+                passage_sha256=passage.passage_sha256,
                 section_title=passage.section_title,
                 excerpt=passage.text,
                 score=score,
@@ -61,6 +64,16 @@ class GroundedAnswerService:
             model_answer = ModelGroundedAnswer.model_validate(raw)
         except ValidationError as exc:
             raise AnswerAdapterError("The answer provider violated the application schema.") from exc
+
+        if not model_answer.answerable:
+            # The model may identify insufficient support even when lexical
+            # overlap produced hits. Do not return its unsupported explanation.
+            return GroundedAnswer(
+                question=request.question,
+                answerable=False,
+                answer=self._NO_EVIDENCE_ANSWER,
+                citations=[],
+            )
 
         hits_by_id = {hit.passage_id: hit for hit in retrieval.hits}
         unexpected = set(model_answer.citation_ids) - set(hits_by_id)

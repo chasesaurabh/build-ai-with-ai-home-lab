@@ -22,10 +22,12 @@
 | Arbitrary command or path access | No command/path field exists in tool schemas | Reject unknown tool names and arguments before dispatch |
 | Unknown service probing | Closed service enum | Per-tool authorization and trace review |
 | Oversized log extraction | Limit constrained to 1–20 | Per-run result and token budgets |
-| Secret disclosure | Fixture inventory contains secret names only, never values | Output filtering and adversarial fixtures |
+| Secret disclosure | Configuration schema permits ordinary settings and secret names; rejects unexpected fields | Review/redact live data; allowed text fields are not a secret classifier |
 | Poisoned log instructions | Logs are returned as inert evidence | Delimited tool results and instruction hierarchy |
 | Tool-call loops | Not applicable to deterministic Phase A | Step, duplicate-call, time, and token limits |
 | Modified evidence | SHA-256 fixture manifest | Immutable release artifact and replay log |
+
+Revision controls add fresh per-observation IDs (separate payload hashes), same-run citation checks, flat manifest paths, captured-byte verification, typed output bounds, and duplicate tool/service rejection. A checksum is not approval if an attacker can replace both the fixture and its manifest. Time checks and remaining provider timeouts reject late results but cannot forcibly cancel a blocking adapter. No request authentication, multi-tenant isolation, global rate limiting, or production transport authorization is supplied by this prototype.
 
 ## Stop conditions
 

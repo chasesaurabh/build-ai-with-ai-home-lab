@@ -4,12 +4,6 @@ This repository contains the four runnable reference projects for *Build AI with
 
 The examples are deliberately small. They use synthetic fixtures, closed schemas, deterministic policy, visible failure behavior, and disposable deployment targets. None of the applications can repair a service, run an arbitrary command, or silently apply a production change.
 
-[Read the book on Amazon](https://www.amazon.com/dp/B0HKGGXJCF).
-
-![Recorded deterministic structured-intake evaluation](docs/images/m3-preview.jpg)
-
-This is a rendering of actual deterministic development-evaluation output from Windows and CPython 3.12.14 on October 26, 2026, not an application UI or model result. All twelve fixed development cases matched their rubric in this run. Other model and holdout observations remain in [evidence and reproduction](docs/evidence-and-reproduction.md).
-
 ## Projects
 
 | Project | Model-owned choice | Application-owned boundary | Explicitly absent |
@@ -28,16 +22,20 @@ This is a rendering of actual deterministic development-evaluation output from W
 5. Preserve failed results under a local `results/` directory; it is ignored by Git.
 6. Keep the applications loopback-only unless you add and test a real authentication, authorization, TLS, logging, and operating model.
 
+If local AI is new to you, start with the [CPU-only model walkthrough](docs/local-model-starter.md) after the no-model first run. It creates its own endpoint and tests a real Project 1 request, unavailable-provider behavior, and recovery.
+
 Example test command from any project directory:
 
 ```text
 docker build --target test -t build-ai-home-lab-test .
-docker run --rm build-ai-home-lab-test
+docker run --rm --network none build-ai-home-lab-test
 ```
 
-The recorded behavioral evidence used [NVIDIA Nemotron 3.5 Lightning 30B-A3B BF16](https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16) behind an OpenAI-compatible endpoint. The software boundary is provider-portable, but another model, server, prompt, or decoding configuration creates new evidence rather than reproducing the recorded result. Model weights are not included and remain governed by their own license; this repository's MIT License does not replace or extend the model license.
+The October revision evidence used [NVIDIA Nemotron Super 120B NVFP4](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4); the first-edition evidence used Nemotron 3.5 Lightning 30B-A3B BF16. See [provider identity and alias limits](docs/model-provider.md). The software boundary is provider-portable, but another model, server, prompt, or decoding configuration creates new evidence rather than reproducing the recorded result. Model weights are not included and remain governed by their own license; this repository's MIT License does not replace or extend the model license.
 
 ## Evidence and limits
+
+The four automated no-model walkthroughs are listed in [prerequisites](docs/prerequisites.md). Current observed test counts are 52, 43, 56 and 44. See [dependency constraints and audit scope](docs/dependencies.md).
 
 Each project includes:
 
@@ -49,13 +47,19 @@ Each project includes:
 
 The recorded counts are small, bounded experiments—not general accuracy, security, or performance claims. See [evidence and reproduction](docs/evidence-and-reproduction.md).
 
-## Repository status
+## Edition mapping
 
-This is the public companion repository for the book. The edition-aligned release is identified by the immutable `book-v1.0.0` tag. Reproduce the projects from that tag when following the printed edition; later commits may reflect corrections or dependency changes.
+This source tree is the revised companion for the second edition, with code identity `book-v2.0.0`. Verify the publicly accessible tag against the commit printed in that edition; a branch name or local folder is not proof of release availability. The preserved `book-v1.0.0` tag belongs to the first edition and does not contain these revised walkthroughs. Use [BOOK_VERSION.md](BOOK_VERSION.md) for the mapping.
 
 The companion code is available under the [MIT License](LICENSE). Model weights, third-party packages, and linked materials remain subject to their own terms.
 
 The book manuscript, cover, diagrams, screenshots, review reports, and publishing files are not part of this repository.
+
+## Historical first-edition material
+
+The [first-edition Amazon destination](https://www.amazon.com/dp/B0HKGGXJCF) identifies the older book, not this revised code. A new book destination must be verified separately before linking it here.
+
+The [preserved October 26 deterministic evaluation image](docs/images/m3-preview.jpg) is a first-edition Windows/CPython 3.12.14 observation: 12/12 fixed development cases in that run. It is not an application UI, model result or revised-adapter score. Current and historical outcomes remain separate in [evidence and reproduction](docs/evidence-and-reproduction.md).
 
 ## Choose your next project
 

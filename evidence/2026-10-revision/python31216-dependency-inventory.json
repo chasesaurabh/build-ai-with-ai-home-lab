@@ -1,0 +1,500 @@
+[
+  {
+    "project": "project-1-intake-service",
+    "python": "3.12.16",
+    "machine": "x86_64",
+    "image_id": "sha256:157189857f665704671e2d0edfd58da124f9e1dfb877b410b61b7f3f11b40d53",
+    "pip_check": "No broken requirements found.",
+    "packages": [
+      {
+        "name": "annotated-doc",
+        "version": "0.0.5",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "annotated-types",
+        "version": "0.8.0",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "anyio",
+        "version": "4.15.1",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "click",
+        "version": "8.5.0",
+        "license_expression": "BSD-3-Clause",
+        "license": null
+      },
+      {
+        "name": "fastapi",
+        "version": "0.141.1",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "h11",
+        "version": "0.16.0",
+        "license_expression": null,
+        "license": "MIT"
+      },
+      {
+        "name": "httpcore2",
+        "version": "2.13.0",
+        "license_expression": "BSD-3-Clause",
+        "license": null
+      },
+      {
+        "name": "httpx2",
+        "version": "2.13.0",
+        "license_expression": "BSD-3-Clause",
+        "license": null
+      },
+      {
+        "name": "idna",
+        "version": "3.20",
+        "license_expression": "BSD-3-Clause",
+        "license": null
+      },
+      {
+        "name": "iniconfig",
+        "version": "2.3.1",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "packaging",
+        "version": "26.3",
+        "license_expression": "Apache-2.0 OR BSD-2-Clause",
+        "license": null
+      },
+      {
+        "name": "pip",
+        "version": "26.2.1",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "pluggy",
+        "version": "1.7.0",
+        "license_expression": null,
+        "license": "MIT"
+      },
+      {
+        "name": "pydantic",
+        "version": "2.13.5",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "pydantic_core",
+        "version": "2.46.5",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "Pygments",
+        "version": "2.21.0",
+        "license_expression": "BSD-2-Clause",
+        "license": null
+      },
+      {
+        "name": "pytest",
+        "version": "9.1.1",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "starlette",
+        "version": "1.10.0",
+        "license_expression": "BSD-3-Clause",
+        "license": null
+      },
+      {
+        "name": "truststore",
+        "version": "0.10.5",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "typing-inspection",
+        "version": "0.4.4",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "typing_extensions",
+        "version": "4.16.0",
+        "license_expression": "PSF-2.0",
+        "license": null
+      },
+      {
+        "name": "uvicorn",
+        "version": "0.53.0",
+        "license_expression": "BSD-3-Clause",
+        "license": null
+      }
+    ]
+  },
+  {
+    "project": "project-2-runbook-assistant",
+    "python": "3.12.16",
+    "machine": "x86_64",
+    "image_id": "sha256:201ba90b4deed6245c8f27d72456f4444ed26293748cce8db817e2984a62dc19",
+    "pip_check": "No broken requirements found.",
+    "packages": [
+      {
+        "name": "annotated-doc",
+        "version": "0.0.5",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "annotated-types",
+        "version": "0.8.0",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "anyio",
+        "version": "4.15.1",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "click",
+        "version": "8.5.0",
+        "license_expression": "BSD-3-Clause",
+        "license": null
+      },
+      {
+        "name": "fastapi",
+        "version": "0.141.1",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "h11",
+        "version": "0.16.0",
+        "license_expression": null,
+        "license": "MIT"
+      },
+      {
+        "name": "httpcore2",
+        "version": "2.13.0",
+        "license_expression": "BSD-3-Clause",
+        "license": null
+      },
+      {
+        "name": "httpx2",
+        "version": "2.13.0",
+        "license_expression": "BSD-3-Clause",
+        "license": null
+      },
+      {
+        "name": "idna",
+        "version": "3.20",
+        "license_expression": "BSD-3-Clause",
+        "license": null
+      },
+      {
+        "name": "iniconfig",
+        "version": "2.3.1",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "packaging",
+        "version": "26.3",
+        "license_expression": "Apache-2.0 OR BSD-2-Clause",
+        "license": null
+      },
+      {
+        "name": "pip",
+        "version": "26.2.1",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "pluggy",
+        "version": "1.7.0",
+        "license_expression": null,
+        "license": "MIT"
+      },
+      {
+        "name": "pydantic",
+        "version": "2.13.5",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "pydantic_core",
+        "version": "2.46.5",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "Pygments",
+        "version": "2.21.0",
+        "license_expression": "BSD-2-Clause",
+        "license": null
+      },
+      {
+        "name": "pytest",
+        "version": "9.1.1",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "starlette",
+        "version": "1.10.0",
+        "license_expression": "BSD-3-Clause",
+        "license": null
+      },
+      {
+        "name": "truststore",
+        "version": "0.10.5",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "typing-inspection",
+        "version": "0.4.4",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "typing_extensions",
+        "version": "4.16.0",
+        "license_expression": "PSF-2.0",
+        "license": null
+      },
+      {
+        "name": "uvicorn",
+        "version": "0.53.0",
+        "license_expression": "BSD-3-Clause",
+        "license": null
+      }
+    ]
+  },
+  {
+    "project": "project-3-readonly-diagnostic-agent",
+    "python": "3.12.16",
+    "machine": "x86_64",
+    "image_id": "sha256:8f627f1e635c6ec4e89a361ead814568f63930bb1f5439b6dfe713310c1e90f4",
+    "pip_check": "No broken requirements found.",
+    "packages": [
+      {
+        "name": "annotated-doc",
+        "version": "0.0.5",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "annotated-types",
+        "version": "0.8.0",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "anyio",
+        "version": "4.15.1",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "click",
+        "version": "8.5.0",
+        "license_expression": "BSD-3-Clause",
+        "license": null
+      },
+      {
+        "name": "fastapi",
+        "version": "0.141.1",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "h11",
+        "version": "0.16.0",
+        "license_expression": null,
+        "license": "MIT"
+      },
+      {
+        "name": "httpcore2",
+        "version": "2.13.0",
+        "license_expression": "BSD-3-Clause",
+        "license": null
+      },
+      {
+        "name": "httpx2",
+        "version": "2.13.0",
+        "license_expression": "BSD-3-Clause",
+        "license": null
+      },
+      {
+        "name": "idna",
+        "version": "3.20",
+        "license_expression": "BSD-3-Clause",
+        "license": null
+      },
+      {
+        "name": "iniconfig",
+        "version": "2.3.1",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "packaging",
+        "version": "26.3",
+        "license_expression": "Apache-2.0 OR BSD-2-Clause",
+        "license": null
+      },
+      {
+        "name": "pip",
+        "version": "26.2.1",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "pluggy",
+        "version": "1.7.0",
+        "license_expression": null,
+        "license": "MIT"
+      },
+      {
+        "name": "pydantic",
+        "version": "2.13.5",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "pydantic_core",
+        "version": "2.46.5",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "Pygments",
+        "version": "2.21.0",
+        "license_expression": "BSD-2-Clause",
+        "license": null
+      },
+      {
+        "name": "pytest",
+        "version": "9.1.1",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "starlette",
+        "version": "1.10.0",
+        "license_expression": "BSD-3-Clause",
+        "license": null
+      },
+      {
+        "name": "truststore",
+        "version": "0.10.5",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "typing-inspection",
+        "version": "0.4.4",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "typing_extensions",
+        "version": "4.16.0",
+        "license_expression": "PSF-2.0",
+        "license": null
+      },
+      {
+        "name": "uvicorn",
+        "version": "0.53.0",
+        "license_expression": "BSD-3-Clause",
+        "license": null
+      }
+    ]
+  },
+  {
+    "project": "project-4-sandboxed-change-planner",
+    "python": "3.12.16",
+    "machine": "x86_64",
+    "image_id": "sha256:3e531e609238029ec041d880096c8f1a8314215eb0fec14b811c3f49914738e0",
+    "pip_check": "No broken requirements found.",
+    "packages": [
+      {
+        "name": "annotated-types",
+        "version": "0.8.0",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "iniconfig",
+        "version": "2.3.1",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "packaging",
+        "version": "26.3",
+        "license_expression": "Apache-2.0 OR BSD-2-Clause",
+        "license": null
+      },
+      {
+        "name": "pip",
+        "version": "26.2.1",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "pluggy",
+        "version": "1.7.0",
+        "license_expression": null,
+        "license": "MIT"
+      },
+      {
+        "name": "pydantic",
+        "version": "2.13.5",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "pydantic_core",
+        "version": "2.46.5",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "Pygments",
+        "version": "2.21.0",
+        "license_expression": "BSD-2-Clause",
+        "license": null
+      },
+      {
+        "name": "pytest",
+        "version": "9.1.1",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "typing-inspection",
+        "version": "0.4.4",
+        "license_expression": "MIT",
+        "license": null
+      },
+      {
+        "name": "typing_extensions",
+        "version": "4.16.0",
+        "license_expression": "PSF-2.0",
+        "license": null
+      }
+    ]
+  }
+]

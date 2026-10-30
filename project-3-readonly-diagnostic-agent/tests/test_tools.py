@@ -13,7 +13,7 @@ from app.workflow import DeterministicDiagnosticWorkflow
 FIXTURE_DIR = Path(__file__).parents[1] / "fixtures"
 
 
-def test_fixture_loads_and_status_has_stable_evidence() -> None:
+def test_fixture_loads_and_status_has_evidence() -> None:
     tools = ReadOnlyLabTools(FIXTURE_DIR)
     result = tools.get_service_status(StatusRequest(service="media-server"))
     assert result.data["state"] == "degraded"
@@ -77,7 +77,7 @@ def test_config_inventory_contains_secret_names_not_values() -> None:
     ("service", "expected_text"),
     [
         ("media-server", "CPU saturation"),
-        ("reverse-proxy", "connection refused"),
+        ("reverse-proxy", "health checks"),
         ("storage-pool", "degraded redundancy"),
         ("backup-service", "healthy"),
     ],

@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-30",
+  "results": [
+    {
+      "script": "first-run.ps1",
+      "tests": [
+        "52 passed in 6.00s"
+      ],
+      "walkthrough": [
+        "PASS: tests, liveness, readiness, request, rejection, and restart."
+      ],
+      "full_private_log_sha256": "690af46315540c660ada13949803a7f1e89ddd4645076dc3704422285f0393f8"
+    },
+    {
+      "script": "runbook-first-run.ps1",
+      "tests": [
+        "43 passed in 2.89s"
+      ],
+      "walkthrough": [
+        "PASS: corpus tests, search, abstention, provider failure, input rejection, and restart."
+      ],
+      "full_private_log_sha256": "904fd9ab3fd2a1885750124bb11f3f05e6899fac8c20d30c1022b8ba5976ef59"
+    },
+    {
+      "script": "diagnostic-first-run.ps1",
+      "tests": [
+        "56 passed in 0.41s"
+      ],
+      "walkthrough": [
+        "PASS: tests, fixed observations, current-run citations, provider failure, input rejection, restart, stable hashes and fresh IDs."
+      ],
+      "full_private_log_sha256": "550cc09bdad67f26ae0e4155247b6368a5ab0eb6dc37cbdb1daf9eb4a96707b9"
+    },
+    {
+      "script": "planner-first-run.ps1",
+      "tests": [
+        "44 passed in 1.04s"
+      ],
+      "walkthrough": [
+        "PASS: review package, hashes, disposable candidate, restart, invalid-candidate rejection, and exact configuration restoration. Artifacts: [local output directory omitted]."
+      ],
+      "full_private_log_sha256": "6ce2f123602cb39d530a3c39983b9553df13522a404e0b1693ff361782ef6a7d"
+    }
+  ],
+  "scope": "Exact working-tree scripts executed under PowerShell7 with current Linux-container base. Build cache allowed; no public-tag acquisition claim.",
+  "public_export_note": "Only the absolute local artifact directory was omitted from the extracted planner success line. Test counts/outcomes and full original private-log hashes are unchanged."
+}

@@ -1,0 +1,43 @@
+{
+  "run": "model-bootstrap-011",
+  "started_utc": "2026-10-30T17:32:10.7761696Z",
+  "finished_utc": "2026-10-30T17:33:43.0023671Z",
+  "result": "pass",
+  "fresh_model_volume": true,
+  "model": "qwen3:4b-instruct-2507-q4_K_M",
+  "server_image_id": "sha256:20d1bbfbabe1c97ba4b16301f08a20d8484bcf77047742a3cb71c613d8e12d0b",
+  "server_image_digests": [
+    "ollama/ollama@sha256:20d1bbfbabe1c97ba4b16301f08a20d8484bcf77047742a3cb71c613d8e12d0b"
+  ],
+  "application_image_id": "sha256:e6685fd1720fad51a00beb23ae1aac04ad51f4b0ddb2c7d150ed142dae61e37e",
+  "engine": {
+    "OSType": "linux",
+    "Architecture": "x86_64",
+    "NCPU": 24,
+    "MemTotal": 67310301184
+  },
+  "server_limits": {
+    "cpu_quota": 8,
+    "memory_bytes": 6442450944,
+    "extra_swap": 0,
+    "gpu_devices": 0,
+    "context_tokens": 4096
+  },
+  "case": "The backup service is offline.",
+  "case_count": 1,
+  "successful_requests": 2,
+  "scope": "One repeated compatibility/failure/recovery case, not accuracy or Projects2\u20134 quality.",
+  "source_state": "Precursor script before KeepRunning option; exact installed image/model and raw outcomes retained.",
+  "adapter_sha256": "95a2a5758345f7f9239142124bd84cfd5bb28af639d31d19f209b96a8894f5f8",
+  "files": {
+    "model-listing.json": "a906eb750201881321cdf5118578ff815842bc49b2953b904fed377661e80557",
+    "model-loaded.json": "bce9f888b06032d5b75909dc22f87767436910ce6492f58ac79d40b1e2a1c9a1",
+    "model-tags.json": "08c004609ebc70cd14426aca23a6898152102545498826c6466ea13b1bc37745",
+    "provider-stopped.json": "bf5c456e76fd9a1a3c5d8efc4b025a764c1d1dc2a02d7b1b8aad9c280ee4cd34",
+    "request-after.json": "9c0c08a60c62a1f2585a76a31033ce5f2ca0dc8cd8356c2278eb5c4027ced067",
+    "request-before.json": "afdcccbcd0304d5b6d13592ebcda3d6d19d4e22f57b997508cbac53b6acc8d24",
+    "request-provider-stopped.json": "3f8fcc2e1665f1a623a179142165cf65c54cde374ff56d21e85a78b7cefca2d7",
+    "resource-snapshot.jsonl": "5c88e33b544a6c23dc281e674d82dfec2421bb26d461bf63b997f0ac32826b88",
+    "server-version.json": "b049c2c9ecc204832aa915b1b8332c6e482fa8eed2cbb33ab031cdc1f67c2fed"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "response": {
+    "category": "availability",
+    "urgency": "high",
+    "affected_system": "backup service",
+    "evidence_requests": [
+      "service_status",
+      "recent_logs"
+    ],
+    "next_step": "escalate",
+    "rationale": "The request names backup service and was classified as availability with condition outage; deterministic policy selected escalate.",
+    "requires_human_review": true
+  },
+  "expected": true,
+  "listing": {
+    "object": "list",
+    "data": [
+      {
+        "id": "qwen3:4b-instruct-2507-q4_K_M",
+        "object": "model",
+        "created": 1793381670,
+        "owned_by": "library"
+      }
+    ]
+  }
+}

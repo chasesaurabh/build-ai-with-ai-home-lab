@@ -51,6 +51,7 @@ def main() -> None:
                 "tools": tools,
                 "summary": summary or None,
                 "evidence_ids": run.report.evidence_ids if run else [],
+                "tool_results": [result.model_dump(mode="json") for result in run.tool_results] if run else [],
                 "required_tools": required_tools,
                 "summary_terms": summary_terms,
                 "forbidden_summary_absent": forbidden_summary_absent,

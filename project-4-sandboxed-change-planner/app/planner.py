@@ -4,12 +4,13 @@ import copy
 import difflib
 import hashlib
 import json
+import re
 from pathlib import Path
 from typing import Any
 
 from pydantic import ValidationError
 
-from app.models import ApprovalPackage, ModelChangeProposal, SourceConfig, ValidationResult
+from app.models import ApprovalPackage, ModelChangeProposal, ModelDesiredProposal, SourceConfig, ValidationResult
 
 
 class ChangePlanningError(RuntimeError):
@@ -24,15 +25,24 @@ class SandboxedChangePlanner:
         "maintenance_mode": "Maintenance mode intentionally interrupts normal client service.",
     }
     def __init__(self, fixture_dir: Path) -> None:
+        fixture_dir = fixture_dir.resolve()
         manifest_path = fixture_dir / "manifest.json"
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        filename = manifest.get("file")
+        if not isinstance(filename, str) or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*\.json", filename):
+            raise ChangePlanningError("The manifest requires a simple JSON filename.")
         source_path = fixture_dir / manifest["file"]
+        if source_path.is_symlink() or source_path.resolve().parent != fixture_dir:
+            raise ChangePlanningError("The source must not escape through links or paths.")
         unexpected = {
             path.name for path in fixture_dir.glob("*.json")
         } - {"manifest.json", manifest["file"]}
         if unexpected:
             raise ChangePlanningError("Unapproved fixture files are present.")
-        source_bytes = source_path.read_bytes()
+        with source_path.open("rb") as stream:
+            source_bytes = stream.read(65_537)
+        if len(source_bytes) > 65_536:
+            raise ChangePlanningError("The source exceeds its 64-KiB limit.")
         digest = hashlib.sha256(source_bytes).hexdigest()
         if digest != manifest["sha256"]:
             raise ChangePlanningError("The source configuration hash does not match its manifest.")
@@ -46,6 +56,17 @@ class SandboxedChangePlanner:
     @property
     def source_config(self) -> SourceConfig:
         return self._source.model_copy(deep=True)
+
+    def prepare_desired(self, raw_proposal: dict[str, Any]) -> ApprovalPackage:
+        try:
+            desired = ModelDesiredProposal.model_validate(raw_proposal)
+        except ValidationError as exc:
+            raise ChangePlanningError("The desired change violated its closed schema.") from exc
+        source = self._source.model_dump()
+        return self.prepare({"changes": [
+            {"field": change.field, "before": source[change.field], "after": change.after}
+            for change in desired.changes
+        ]})
 
     def prepare(self, raw_proposal: dict[str, Any]) -> ApprovalPackage:
         try:
@@ -77,7 +98,11 @@ class SandboxedChangePlanner:
                 tofile="proposed/service-config.json",
             )
         )
-        if hashlib.sha256(self._source_path.read_bytes()).hexdigest() != self._source_sha256:
+        if self._source_path.is_symlink():
+            raise ChangePlanningError("The source configuration changed during planning.")
+        with self._source_path.open("rb") as stream:
+            current_bytes = stream.read(65_537)
+        if hashlib.sha256(current_bytes).hexdigest() != self._source_sha256:
             raise ChangePlanningError("The source configuration changed during planning.")
 
         identity_material = json.dumps(
@@ -91,6 +116,12 @@ class SandboxedChangePlanner:
         changed_names = [change.field for change in proposal.changes]
         rationale = "Prepare a review-only change to: " + ", ".join(changed_names) + "."
         risks = [self._risk_by_field[field] for field in changed_names]
+        if "maintenance_mode" in changed_names:
+            risks[changed_names.index("maintenance_mode")] = (
+                "Enabling maintenance mode intentionally interrupts normal client service."
+                if proposed_config.maintenance_mode else
+                "Disabling maintenance mode resumes client traffic; verify readiness and dependencies first."
+            )
         validations = [
             ValidationResult(check="source_integrity", detail="Manifest SHA-256 matched."),
             ValidationResult(check="field_allowlist", detail="Every changed field is explicitly approved."),
@@ -106,6 +137,6 @@ class SandboxedChangePlanner:
             risks=risks,
             unified_diff=unified_diff,
             proposed_config=proposed_config,
-            rollback_config=self._source,
+            rollback_config=self._source.model_copy(deep=True),
             validations=validations,
         )

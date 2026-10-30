@@ -1,0 +1,85 @@
+{
+  "started_utc": "2026-10-30T15:24:17.908429+00:00",
+  "scope": "Known development and already exposed first-edition holdout replay. Scoring unchanged; not a fresh holdout. Full traces added for support review.",
+  "model_before": {
+    "id": "nemotron-super-120b-fp4",
+    "object": "model",
+    "created": 1793373857,
+    "owned_by": "vllm",
+    "root": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4",
+    "parent": null,
+    "max_model_len": 262144,
+    "permission": [
+      {
+        "id": "modelperm-9fc5a4b352369462",
+        "object": "model_permission",
+        "created": 1793373857,
+        "allow_create_engine": false,
+        "allow_sampling": true,
+        "allow_logprobs": true,
+        "allow_search_indices": false,
+        "allow_view": true,
+        "allow_fine_tuning": false,
+        "organization": "*",
+        "group": null,
+        "is_blocking": false
+      }
+    ]
+  },
+  "model_after": {
+    "id": "nemotron-super-120b-fp4",
+    "object": "model",
+    "created": 1793373886,
+    "owned_by": "vllm",
+    "root": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4",
+    "parent": null,
+    "max_model_len": 262144,
+    "permission": [
+      {
+        "id": "modelperm-a28a87a4788ed987",
+        "object": "model_permission",
+        "created": 1793373886,
+        "allow_create_engine": false,
+        "allow_sampling": true,
+        "allow_logprobs": true,
+        "allow_search_indices": false,
+        "allow_view": true,
+        "allow_fine_tuning": false,
+        "organization": "*",
+        "group": null,
+        "is_blocking": false
+      }
+    ]
+  },
+  "reported_identity_stable": true,
+  "image_id": "sha256:8d9ec807f19753ecb55940a79440f273800be6ae8eb73e574e5c9f11d1855ee1",
+  "source_hashes": {
+    "companion\\project-3-readonly-diagnostic-agent\\app\\adapters.py": "3524001dc9b61761eb7f5f1452a7c65ec1f41a290efee020c7743ff1378bf9d3",
+    "companion\\project-3-readonly-diagnostic-agent\\app\\agent.py": "f2ebea221a47f01f4df353827dc640f3248bb8ed1d460519d675e75fcb2c0fc7",
+    "companion\\project-3-readonly-diagnostic-agent\\app\\main.py": "c0c28da093377dd596c4c0ffaaebab02dca4a21676f2a19fb7b16fced91587cc",
+    "companion\\project-3-readonly-diagnostic-agent\\app\\models.py": "3851db67f720cf2378b3d745d10d5b94e7745f5ae6f461fb6a86cc0a59f702fd",
+    "companion\\project-3-readonly-diagnostic-agent\\app\\tools.py": "fcef80167f4348af6ea030dc6c036767532da8fc660f4a93bd98f9f833f5bb99",
+    "companion\\project-3-readonly-diagnostic-agent\\app\\workflow.py": "34e4e9bae6a9fc41be6200d23377b6636ce010c743a84362ede51743fb15fd5c",
+    "companion\\project-3-readonly-diagnostic-agent\\app\\__init__.py": "cbaa7039a5336468213d46b2eb1594abe052a57a925d62be1fda4fa9302e8f94",
+    "companion\\project-3-readonly-diagnostic-agent\\evals\\cases.json": "5f7787f854db402e8940256ddea2806480982c92d766466277422d3d67d4960d",
+    "companion\\project-3-readonly-diagnostic-agent\\evals\\holdout-cases.json": "3117922a9578a6c84678d9a380ddc961fc708ceff5bbd72d1615c29d261ad2bd",
+    "companion\\project-3-readonly-diagnostic-agent\\evals\\run_agent_eval.py": "5ab0a8e20719a786a4556c16beab9dd044f304eb1926d1f50ba963370178dabd"
+  },
+  "summary": {
+    "development": {
+      "case_count": 5,
+      "error_count": 0,
+      "passed": 5
+    },
+    "old_holdout_replay": {
+      "case_count": 5,
+      "error_count": 0,
+      "passed": 3
+    }
+  },
+  "original_output_sha256": "d2628fd7a51225625d7a9ec14b0aeb343bd8dc8242511541abf59ff9aa92f003",
+  "original_manifest_sha256": "72b9a919b929324be2695488ec285ba236aafcf88f46f05834d4f4909de5673b",
+  "manifest_scope": "Selected production manifest fields; output.json is the exact synthetic result file.",
+  "holdout_scope": "Previously exposed cases are known replay material, not a new unseen holdout.",
+  "completed_utc": "2026-10-30T15:24:46.566334+00:00"
+}

@@ -1,0 +1,93 @@
+{
+  "started_utc": "2026-10-30T15:36:03.912727+00:00",
+  "scope": "Five known development, five known adversarial, five exposed old-holdout replay cases. Scorer unchanged, full packages added. Not a new holdout.",
+  "model_before": {
+    "id": "nemotron-super-120b-fp4",
+    "object": "model",
+    "created": 1793374563,
+    "owned_by": "vllm",
+    "root": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4",
+    "parent": null,
+    "max_model_len": 262144,
+    "permission": [
+      {
+        "id": "modelperm-ac53c9c719f654bc",
+        "object": "model_permission",
+        "created": 1793374563,
+        "allow_create_engine": false,
+        "allow_sampling": true,
+        "allow_logprobs": true,
+        "allow_search_indices": false,
+        "allow_view": true,
+        "allow_fine_tuning": false,
+        "organization": "*",
+        "group": null,
+        "is_blocking": false
+      }
+    ]
+  },
+  "model_after": {
+    "id": "nemotron-super-120b-fp4",
+    "object": "model",
+    "created": 1793374572,
+    "owned_by": "vllm",
+    "root": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4",
+    "parent": null,
+    "max_model_len": 262144,
+    "permission": [
+      {
+        "id": "modelperm-8d8d676f714a5297",
+        "object": "model_permission",
+        "created": 1793374572,
+        "allow_create_engine": false,
+        "allow_sampling": true,
+        "allow_logprobs": true,
+        "allow_search_indices": false,
+        "allow_view": true,
+        "allow_fine_tuning": false,
+        "organization": "*",
+        "group": null,
+        "is_blocking": false
+      }
+    ]
+  },
+  "reported_identity_stable": true,
+  "image_id": "sha256:e61ea2a41136432d64114d12ef82f1da06e5765332c60e02d329a5b740a16571",
+  "source_hashes": {
+    "companion\\project-4-sandboxed-change-planner\\app\\adapters.py": "01d6829598eec5792dc95e5067b4cd1d11a28132d0e527d351b1b8fbc019795b",
+    "companion\\project-4-sandboxed-change-planner\\app\\cli.py": "867bb147184200cdc2f5b016cb3b727324a19a588ebe513fd4b997dd8c46e876",
+    "companion\\project-4-sandboxed-change-planner\\app\\models.py": "f3c5e0a98c1bdaa568e0c3d238611c8bad7086add5f07895ad53193eb788406f",
+    "companion\\project-4-sandboxed-change-planner\\app\\planner.py": "631cbf2b1d24ea1f26d8b348cf071a7d7f8fdc46a95a0d3a42af922ab86170da",
+    "companion\\project-4-sandboxed-change-planner\\app\\service.py": "891f11713e4c651988772e810fb9218f15436343d122570f715b0b974a2e5f0e",
+    "companion\\project-4-sandboxed-change-planner\\app\\__init__.py": "10f3d29f6f31b62cdb4d09caf3070483d653dcf062b18d3d61b930129f59750c",
+    "companion\\project-4-sandboxed-change-planner\\evals\\adversarial-cases.json": "eb421182aa68e9b012c59bae460f665b4bc4ea5b7ab23aacb98e666d15c0ec78",
+    "companion\\project-4-sandboxed-change-planner\\evals\\cases.json": "d8126c3af3630f7043248d76c4125939fe34d56e954bba67bf0e10d928582e47",
+    "companion\\project-4-sandboxed-change-planner\\evals\\holdout-cases.json": "29c92849ce51d0847b15536a370d7754a74e760e7aa6dce56d7ba18dccf6b9f8",
+    "companion\\project-4-sandboxed-change-planner\\evals\\run_model_eval.py": "76348acf23d575e7278683ae9d4f7d7f726de91b6baa6b314b198e01e78adee1"
+  },
+  "summary": {
+    "development": {
+      "case_count": 5,
+      "error_count": 0,
+      "passed": 5
+    },
+    "adversarial": {
+      "case_count": 5,
+      "error_count": 0,
+      "passed": 5
+    },
+    "old_holdout_replay": {
+      "case_count": 5,
+      "error_count": 0,
+      "passed": 5
+    }
+  },
+  "original_output_sha256": "7f86b61282b734059f2aab089d38c14035b49ea08a31cfb8fc060646cb73afc9",
+  "original_manifest_sha256": "a32f934f672b6981be5f832591eec7b48aa56f13152659e50bd367ef2d310557",
+  "manifest_scope": "Selected production manifest fields; output.json is the exact synthetic result file.",
+  "holdout_scope": "Previously exposed cases are known replay material, not a new unseen holdout.",
+  "completed_utc": "2026-10-30T15:36:12.590309+00:00",
+  "provider_version_after": {
+    "version": "0.30.0"
+  }
+}

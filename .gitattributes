@@ -1,4 +1,7 @@
 * text=auto eol=lf
 *.bat text eol=crlf
 *.ps1 text eol=crlf
+evidence/2026-10-revision/** -text whitespace=cr-at-eol
+# Preserve the byte identity recorded by the starter experiment manifest.
+scripts/model-first-run.ps1 -text
 

@@ -129,3 +129,29 @@ def test_structured_request_disables_model_thinking() -> None:
 
     assert CaptureRequestHandler.payload is not None
     assert CaptureRequestHandler.payload["chat_template_kwargs"] == {"enable_thinking": False}
+
+
+@pytest.mark.parametrize('body,status,expected', [
+    (b'{"data":[{"id":"synthetic-model"}]}', 200, True),
+    (b'{"data":[{"id":"synthetic-model-other"}]}', 200, False),
+    (b'{"data":[]}', 200, False),
+    (b'{"data":"synthetic-model"}', 200, False),
+    (b'not-json', 200, False),
+    (b'[]', 200, False),
+    (b'{"data":[{"id":"synthetic-model"}]}', 401, False),
+    (b' ' * 65_537, 200, False),
+])
+def test_readiness_requires_exact_model_in_bounded_listing(body, status, expected):
+    paths = []
+    class ListingHandler(QuietHandler):
+        def do_GET(self):
+            paths.append(self.path)
+            self.send_response(status)
+            self.send_header('Content-Type', 'application/json')
+            self.send_header('Content-Length', str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+    with temporary_server(ListingHandler) as base_url:
+        adapter = OpenAICompatibleAdapter(base_url, 'synthetic-model', timeout_seconds=1)
+        assert adapter.ready() is expected
+    assert paths == ['/v1/models']

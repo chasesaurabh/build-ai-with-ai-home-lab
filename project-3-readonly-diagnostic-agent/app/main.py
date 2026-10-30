@@ -14,7 +14,8 @@ from app.adapters import (
     NemotronDiagnosticAdapter,
 )
 from app.agent import BoundedDiagnosticAgent, DiagnosticPolicyError
-from app.models import DiagnosticRequest, DiagnosticRun, HealthResponse, ReadinessResponse
+from app.models import DiagnosticRequest, DiagnosticRun, HealthResponse, ReadinessResponse, StatusRequest
+from app.workflow import DeterministicDiagnosticWorkflow
 
 
 def create_app(
@@ -34,6 +35,11 @@ def create_app(
         max_seconds=float(os.getenv("MAX_RUN_SECONDS", "30")),
     )
     application = FastAPI(title="Project 3 Read-Only Diagnostic Agent", version="0.1.0")
+    fixed_workflow = DeterministicDiagnosticWorkflow(selected_fixture)
+
+    @application.post("/v1/diagnose-fixed", response_model=DiagnosticRun)
+    def diagnose_fixed(request: StatusRequest) -> DiagnosticRun:
+        return fixed_workflow.run(request.service)
 
     @application.get("/health", response_model=HealthResponse)
     def health() -> HealthResponse:

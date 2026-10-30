@@ -23,12 +23,12 @@ class StubDiagnosticAdapter:
         self.evidence_override = evidence_override
         self.delay_seconds = delay_seconds
 
-    def plan(self, question: str, service: str) -> dict[str, Any]:
+    def plan(self, question: str, service: str, *, timeout_seconds: float | None = None) -> dict[str, Any]:
         if self.delay_seconds:
             time.sleep(self.delay_seconds)
         return self.plan_result
 
-    def diagnose(self, question: str, service: str, results: list[Any]) -> dict[str, Any]:
+    def diagnose(self, question: str, service: str, results: list[Any], *, timeout_seconds: float | None = None) -> dict[str, Any]:
         return {
             "summary": self.summary,
             "evidence_ids": self.evidence_override

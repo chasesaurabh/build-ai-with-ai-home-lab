@@ -1,0 +1,45 @@
+{
+  "run": "model-bootstrap-012",
+  "started_utc": "2026-10-30T17:34:27.0048713Z",
+  "finished_utc": "2026-10-30T17:35:04.6644111Z",
+  "result": "pass",
+  "fresh_model_volume": false,
+  "model": "qwen3:4b-instruct-2507-q4_K_M",
+  "server_image_id": "sha256:20d1bbfbabe1c97ba4b16301f08a20d8484bcf77047742a3cb71c613d8e12d0b",
+  "server_image_digests": [
+    "ollama/ollama@sha256:20d1bbfbabe1c97ba4b16301f08a20d8484bcf77047742a3cb71c613d8e12d0b"
+  ],
+  "application_image_id": "sha256:09246a72582e07e08997ce64c6b71742ef6955843278af00ff40decda325a822",
+  "engine": {
+    "OSType": "linux",
+    "Architecture": "x86_64",
+    "NCPU": 24,
+    "MemTotal": 67310301184
+  },
+  "server_limits": {
+    "cpu_quota": 8,
+    "memory_bytes": 6442450944,
+    "extra_swap": 0,
+    "gpu_devices": 0,
+    "context_tokens": 4096
+  },
+  "case": "The backup service is offline.",
+  "case_count": 1,
+  "successful_requests": 2,
+  "scope": "One repeated compatibility/failure/recovery case, not accuracy or Projects2\u20134 quality.",
+  "source_state": "Final starter script with KeepRunning; retained host request and scoped cleanup also verified.",
+  "adapter_sha256": "95a2a5758345f7f9239142124bd84cfd5bb28af639d31d19f209b96a8894f5f8",
+  "starter_script_sha256": "27c39f1d31eb8132eebdcf3deef8b9b4486a181d5a3b8c7a80a7cb0255694f4d",
+  "files": {
+    "manual-retained-request.json": "0a7df9a9a12b3b01d02b19a54bef24b76c2685eabb0615515c15c3fde6f27f2b",
+    "model-listing.json": "c1357528f9c987ba3a3084dacf94b358bf662d286bf232ad31a7665149f50cb9",
+    "model-loaded.json": "e221c0df052e0dcbf18c6cc2630a9374f945683645efc97d824083bddfbb66eb",
+    "model-tags.json": "9877081d43e9ed92d13003613f2986df59ee9b16643e745e93eccd1295069661",
+    "provider-stopped.json": "bf5c456e76fd9a1a3c5d8efc4b025a764c1d1dc2a02d7b1b8aad9c280ee4cd34",
+    "request-after.json": "0d2e433f42e7e300e85d76dc6a541505a0f0efe8fb2758abae0fc9fb910ffff7",
+    "request-before.json": "8a3170cbe47ee2cae2c55dbb26a44762592a73251bab65b489d41823d833b75e",
+    "request-provider-stopped.json": "af032a49ea98d1d39444c7b9a47fb1fef365bd9c98549a18670b1e44413e7f29",
+    "resource-snapshot.jsonl": "3a80b1d343c51899f4fcfb501918f0e81150f087896cf61db9b43fa2625300c0",
+    "server-version.json": "b049c2c9ecc204832aa915b1b8332c6e482fa8eed2cbb33ab031cdc1f67c2fed"
+  }
+}

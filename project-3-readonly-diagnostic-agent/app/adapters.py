@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import math
 import socket
 import urllib.error
 import urllib.request
@@ -30,13 +31,14 @@ class DiagnosticAdapter(Protocol):
 
     def ready(self) -> bool: ...
 
-    def plan(self, question: str, service: ServiceName) -> dict[str, Any]: ...
+    def plan(self, question: str, service: ServiceName, *, timeout_seconds: float | None = None) -> dict[str, Any]: ...
 
     def diagnose(
         self,
         question: str,
         service: ServiceName,
         results: list[ToolResult],
+        *, timeout_seconds: float | None = None,
     ) -> dict[str, Any]: ...
 
 
@@ -61,6 +63,8 @@ class NemotronDiagnosticAdapter:
         model_id: str = "nemotron-35-lightning",
         timeout_seconds: float = 30,
     ) -> None:
+        if not math.isfinite(timeout_seconds) or timeout_seconds <= 0:
+            raise ValueError("timeout_seconds must be finite and positive.")
         self._base_url = base_url.rstrip("/")
         self._model_id = model_id
         self._timeout_seconds = timeout_seconds
@@ -73,15 +77,21 @@ class NemotronDiagnosticAdapter:
         request = urllib.request.Request(f"{self._base_url}/v1/models", method="GET")
         try:
             with urllib.request.urlopen(request, timeout=min(self._timeout_seconds, 5)) as response:
-                envelope = json.load(response)
-        except (TimeoutError, socket.timeout, urllib.error.URLError, json.JSONDecodeError):
+                raw = response.read(65_537)
+                if len(raw) > 65_536:
+                    return False
+                envelope = json.loads(raw)
+        except (TimeoutError, socket.timeout, urllib.error.URLError, json.JSONDecodeError, UnicodeDecodeError):
+            return False
+        if not isinstance(envelope, dict) or not isinstance(envelope.get("data"), list):
             return False
         return any(
             isinstance(item, dict) and item.get("id") == self._model_id
             for item in envelope.get("data", [])
         )
 
-    def _complete(self, system: str, user: str, schema: dict[str, Any], name: str) -> dict[str, Any]:
+    def _complete(self, system: str, user: str, schema: dict[str, Any], name: str,
+                  timeout_seconds: float | None = None) -> dict[str, Any]:
         payload = {
             "model": self._model_id,
             "messages": [
@@ -103,11 +113,19 @@ class NemotronDiagnosticAdapter:
             method="POST",
         )
         try:
-            with urllib.request.urlopen(request, timeout=self._timeout_seconds) as response:
-                envelope = json.load(response)
+            timeout = min(self._timeout_seconds, timeout_seconds) if timeout_seconds is not None else self._timeout_seconds
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                raw = response.read(1_048_577)
+                if len(raw) > 1_048_576:
+                    raise DiagnosticAdapterResponseError("The diagnostic response exceeded its size limit.")
+                envelope = json.loads(raw)
         except (TimeoutError, socket.timeout) as exc:
             raise DiagnosticAdapterTimeoutError("The diagnostic model timed out.") from exc
+        except urllib.error.HTTPError as exc:
+            raise DiagnosticAdapterResponseError("The diagnostic provider rejected the request.") from exc
         except urllib.error.URLError as exc:
+            if isinstance(exc.reason, (TimeoutError, socket.timeout)):
+                raise DiagnosticAdapterTimeoutError("The diagnostic model timed out.") from exc
             raise DiagnosticAdapterUnavailableError("The diagnostic model is unavailable.") from exc
         except (json.JSONDecodeError, UnicodeDecodeError) as exc:
             raise DiagnosticAdapterResponseError("The diagnostic model returned an invalid envelope.") from exc
@@ -134,7 +152,7 @@ class NemotronDiagnosticAdapter:
     def _provider_schema(model: type[ModelToolPlan] | type[ModelDiagnosis]) -> dict[str, Any]:
         return model.model_json_schema()
 
-    def plan(self, question: str, service: ServiceName) -> dict[str, Any]:
+    def plan(self, question: str, service: ServiceName, *, timeout_seconds: float | None = None) -> dict[str, Any]:
         user = (
             f"TARGET_SERVICE: {service}\n"
             "UNTRUSTED_QUESTION_START\n"
@@ -146,6 +164,7 @@ class NemotronDiagnosticAdapter:
             user,
             self._provider_schema(ModelToolPlan),
             "diagnostic_tool_plan",
+            timeout_seconds,
         )
 
     def diagnose(
@@ -153,6 +172,7 @@ class NemotronDiagnosticAdapter:
         question: str,
         service: ServiceName,
         results: list[ToolResult],
+        *, timeout_seconds: float | None = None,
     ) -> dict[str, Any]:
         evidence = "\n\n".join(
             (
@@ -175,4 +195,5 @@ class NemotronDiagnosticAdapter:
             user,
             self._provider_schema(ModelDiagnosis),
             "diagnostic_report",
+            timeout_seconds,
         )

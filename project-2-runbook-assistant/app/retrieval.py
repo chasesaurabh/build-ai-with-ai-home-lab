@@ -18,6 +18,9 @@ class Passage:
     passage_id: str
     document_title: str
     document_version: str
+    source_file: str
+    source_sha256: str
+    passage_sha256: str
     section_title: str
     text: str
 
@@ -57,7 +60,7 @@ def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def _parse_document(path: Path, document_id: str, version: str) -> list[Passage]:
+def _parse_document(path: Path, document_id: str, version: str, verified_text: str, source_sha256: str) -> list[Passage]:
     title: str | None = None
     current_section: str | None = None
     body: list[str] = []
@@ -75,13 +78,16 @@ def _parse_document(path: Path, document_id: str, version: str) -> list[Passage]
                     passage_id=f"{document_id}#{_slug(current_section)}",
                     document_title=title or document_id,
                     document_version=version,
+                    source_file=path.name,
+                    source_sha256=source_sha256,
+                    passage_sha256=hashlib.sha256(text.encode("utf-8")).hexdigest(),
                     section_title=current_section,
                     text=text,
                 )
             )
         body = []
 
-    for line in path.read_text(encoding="utf-8").splitlines():
+    for line in verified_text.splitlines():
         if line.startswith("# ") and title is None:
             title = line[2:].strip()
         elif line.startswith("## "):
@@ -96,14 +102,33 @@ def _parse_document(path: Path, document_id: str, version: str) -> list[Passage]
 
 
 def load_corpus(corpus_dir: Path) -> list[Passage]:
+    corpus_dir = corpus_dir.resolve()
     manifest_path = corpus_dir / "manifest.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     documents = manifest.get("documents")
     if not isinstance(documents, list) or not documents:
         raise CorpusError("The corpus manifest contains no documents.")
 
-    allowed_files = {entry["file"] for entry in documents}
-    actual_files = {path.name for path in corpus_dir.glob("*.md")}
+    allowed_files: set[str] = set()
+    document_ids: set[str] = set()
+    for entry in documents:
+        if not isinstance(entry, dict):
+            raise CorpusError("Every manifest document must be an object.")
+        filename = entry.get("file")
+        document_id = entry.get("id")
+        if not isinstance(filename, str) or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*\.md", filename):
+            raise CorpusError("Manifest files must be simple Markdown filenames within the corpus directory.")
+        if not isinstance(document_id, str) or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,63}", document_id):
+            raise CorpusError("Document IDs must be short, stable identifiers.")
+        if filename.casefold() in {x.casefold() for x in allowed_files} or document_id in document_ids:
+            raise CorpusError("Duplicate manifest filename or document ID.")
+        if not isinstance(entry.get("version"), str) or not entry["version"].strip():
+            raise CorpusError("Every document requires a version string.")
+        if not isinstance(entry.get("sha256"), str) or not re.fullmatch(r"[0-9a-fA-F]{64}", entry["sha256"]):
+            raise CorpusError("Every document requires a SHA-256 digest.")
+        allowed_files.add(filename)
+        document_ids.add(document_id)
+    actual_files = {path.name for path in corpus_dir.iterdir() if path.suffix.lower() == ".md"}
     unexpected = actual_files - allowed_files
     if unexpected:
         raise CorpusError(f"Unapproved corpus files found: {', '.join(sorted(unexpected))}")
@@ -112,11 +137,14 @@ def load_corpus(corpus_dir: Path) -> list[Passage]:
     seen_ids: set[str] = set()
     for entry in documents:
         path = corpus_dir / entry["file"]
+        if path.is_symlink() or path.resolve().parent != corpus_dir:
+            raise CorpusError("Approved corpus files must not escape through links or paths.")
         if not path.is_file():
             raise CorpusError(f"Approved corpus file is missing: {entry['file']}")
-        if _sha256(path) != entry["sha256"]:
+        verified_bytes = path.read_bytes()
+        if hashlib.sha256(verified_bytes).hexdigest() != entry["sha256"].lower():
             raise CorpusError(f"Hash mismatch for approved corpus file: {entry['file']}")
-        for passage in _parse_document(path, entry["id"], entry["version"]):
+        for passage in _parse_document(path, entry["id"], entry["version"], verified_bytes.decode("utf-8"), entry["sha256"].lower()):
             if passage.passage_id in seen_ids:
                 raise CorpusError(f"Duplicate passage identifier: {passage.passage_id}")
             seen_ids.add(passage.passage_id)

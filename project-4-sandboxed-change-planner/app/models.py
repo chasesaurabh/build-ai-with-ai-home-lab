@@ -87,6 +87,48 @@ class ValidationResult(BaseModel):
     detail: str
 
 
+class DesiredImageTag(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+    field: Literal["image_tag"]
+    after: str = Field(max_length=150)
+
+
+class DesiredReplicas(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+    field: Literal["replica_count"]
+    after: int = Field(ge=1, le=4)
+
+
+class DesiredTimeout(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+    field: Literal["request_timeout_seconds"]
+    after: int = Field(ge=5, le=120)
+
+
+class DesiredMaintenance(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+    field: Literal["maintenance_mode"]
+    after: bool
+
+
+DesiredChange = Annotated[
+    DesiredImageTag | DesiredReplicas | DesiredTimeout | DesiredMaintenance,
+    Field(discriminator="field"),
+]
+
+
+class ModelDesiredProposal(BaseModel):
+    model_config = ConfigDict(extra="forbid", strict=True)
+    changes: list[DesiredChange] = Field(min_length=1, max_length=2)
+
+    @field_validator("changes")
+    @classmethod
+    def unique_fields(cls, changes: list[DesiredChange]) -> list[DesiredChange]:
+        if len({change.field for change in changes}) != len(changes):
+            raise ValueError("changed fields must be unique")
+        return changes
+
+
 class ApprovalPackage(BaseModel):
     model_config = ConfigDict(extra="forbid")
     proposal_id: str = Field(pattern=r"^proposal-[a-f0-9]{16}$")

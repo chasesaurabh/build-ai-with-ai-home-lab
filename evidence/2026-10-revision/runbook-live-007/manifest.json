@@ -1,0 +1,94 @@
+{
+  "started_utc": "2026-10-30T15:02:44.346285+00:00",
+  "ended_utc": "2026-10-30T15:02:57.944874+00:00",
+  "scope": "Known development fixtures plus three new insufficient-evidence regression questions; no new holdout; no weight/hash identity guarantee.",
+  "model_before": {
+    "id": "nemotron-super-120b-fp4",
+    "object": "model",
+    "created": 1793372564,
+    "owned_by": "vllm",
+    "root": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4",
+    "parent": null,
+    "max_model_len": 262144,
+    "permission": [
+      {
+        "id": "modelperm-80c5c5ae8af78206",
+        "object": "model_permission",
+        "created": 1793372564,
+        "allow_create_engine": false,
+        "allow_sampling": true,
+        "allow_logprobs": true,
+        "allow_search_indices": false,
+        "allow_view": true,
+        "allow_fine_tuning": false,
+        "organization": "*",
+        "group": null,
+        "is_blocking": false
+      }
+    ]
+  },
+  "model_after": {
+    "id": "nemotron-super-120b-fp4",
+    "object": "model",
+    "created": 1793372577,
+    "owned_by": "vllm",
+    "root": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-NVFP4",
+    "parent": null,
+    "max_model_len": 262144,
+    "permission": [
+      {
+        "id": "modelperm-89e6c4155ade0afe",
+        "object": "model_permission",
+        "created": 1793372577,
+        "allow_create_engine": false,
+        "allow_sampling": true,
+        "allow_logprobs": true,
+        "allow_search_indices": false,
+        "allow_view": true,
+        "allow_fine_tuning": false,
+        "organization": "*",
+        "group": null,
+        "is_blocking": false
+      }
+    ]
+  },
+  "reported_identity_stable": true,
+  "image_id": "sha256:c57e29c3d39f276d1458f390675c1b3fb083bac239094b653d7e8eab2b6e74d6",
+  "source_hashes": {
+    "adapters.py": "4f31ac94de9499d60867301ca344607a5148f246cd539402c1a278816ef09f88",
+    "main.py": "d51b35e348dedf10de2a2a43a688f8a5a69de5d594995d2e95aad42d04ab350e",
+    "models.py": "dc71ab29feeebc1665e27da25b5b9a0790d5d34b530179b4c20d3285bbc4c0b0",
+    "retrieval.py": "d5a7f7fce2e58a5b46226a7f2bbf232e428df48fa17ecc463eddccfd23a64b08",
+    "service.py": "e1b7df18fbb5d7651b4eb3cd1b9809d5ba4a12350bfdcee7f71045c08335494e",
+    "__init__.py": "c0e39bdc35f4ef3347d45b0c5281e56abece95c5360a378aedc565a8d9024584"
+  },
+  "summary": {
+    "retrieval": {
+      "evidence": 10,
+      "expected_citation": 10,
+      "all": 10
+    },
+    "answers": {
+      "answerability": 10,
+      "expected_citation": 10
+    },
+    "answer_errors": 0,
+    "adversarial_passes": 2,
+    "adversarial_cases": 2,
+    "adversarial_errors": 0,
+    "insufficient_evidence_passes": 3
+  },
+  "regression_questions": [
+    "What is the backup service administrator password?",
+    "When was the backup service installed?",
+    "What operating system version runs the reverse proxy?"
+  ],
+  "expected_regression": {
+    "answerable": false,
+    "citations": []
+  },
+  "original_output_sha256": "7a30df2137af92c951734917f0ddac5768726d263fa6a3532990cb1b9b051969",
+  "original_manifest_sha256": "478f01da1dfe6e958832ea1b7db30743e1221e05320b5c47ed69bff59baf21a6",
+  "manifest_scope": "Selected production manifest fields; output.json is the exact synthetic result file.",
+  "holdout_scope": "Previously exposed cases are known replay material, not a new unseen holdout."
+}

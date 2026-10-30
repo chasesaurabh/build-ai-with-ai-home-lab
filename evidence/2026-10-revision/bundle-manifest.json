@@ -1,0 +1,101 @@
+{
+  "staged_utc": "2026-10-30T17:05:17.253254+00:00",
+  "status": "local_only_pending_release_review",
+  "runs": [
+    {
+      "run": "live-intake-004",
+      "output_sha256": "cc11801c6d046a0ecedcef90e5491b06c7bc0e00770c4b2d3f36c67a2a780a57",
+      "bytes": 9761
+    },
+    {
+      "run": "live-intake-005",
+      "output_sha256": "ce747b2eb4488136ed0bb18a8dbf4a4a683acf4d8579d7eddfda07dc9900fae8",
+      "bytes": 9746
+    },
+    {
+      "run": "runbook-live-006",
+      "output_sha256": "393fee566a046ae5f548f9980551c79b0c9422d37980d88d8f622a97f2c07ab3",
+      "bytes": 11029
+    },
+    {
+      "run": "runbook-live-007",
+      "output_sha256": "7a30df2137af92c951734917f0ddac5768726d263fa6a3532990cb1b9b051969",
+      "bytes": 11463
+    },
+    {
+      "run": "diagnostic-live-010",
+      "output_sha256": "d2628fd7a51225625d7a9ec14b0aeb343bd8dc8242511541abf59ff9aa92f003",
+      "bytes": 22639
+    },
+    {
+      "run": "planner-live-012",
+      "output_sha256": "7f86b61282b734059f2aab089d38c14035b49ea08a31cfb8fc060646cb73afc9",
+      "bytes": 48982
+    },
+    {
+      "run": "live-intake-013",
+      "output_sha256": "037cfa6aeeae287c029d032c04e559a1114120acac118a44262947ce6302b4e1",
+      "bytes": 9746
+    }
+  ],
+  "files": {
+    "dependency-advisory-query.json": "5923d2b459058bce13e105ac5b5b12ec7c65cce3ce538ee88488489de1f5f53d",
+    "dependency-inventory.json": "454180ca95e4219688b566aa477d678dfb9b2cc09cecbb3cc5a02391d900e9c7",
+    "diagnostic-live-010/manifest.json": "67d4fa9ae39dc6b679169662d5f707000fb8e5d3b07aaadf83b642334ddf633f",
+    "diagnostic-live-010/output.json": "d2628fd7a51225625d7a9ec14b0aeb343bd8dc8242511541abf59ff9aa92f003",
+    "live-intake-004/manifest.json": "e1eff0b1046168f4885872cb0817166edc3842d78220055a6c92e65c5946edd5",
+    "live-intake-004/output.json": "cc11801c6d046a0ecedcef90e5491b06c7bc0e00770c4b2d3f36c67a2a780a57",
+    "live-intake-005/manifest.json": "59de8725689dd3bd3e4e389c5574f5275ca7beacabb101ce1274a0c75a7d988d",
+    "live-intake-005/output.json": "ce747b2eb4488136ed0bb18a8dbf4a4a683acf4d8579d7eddfda07dc9900fae8",
+    "live-intake-013/manifest.json": "25d370ed34b3ae91ea6df5e7ad3d97485b35f847cf16aaa4a6521b702c287497",
+    "live-intake-013/output.json": "037cfa6aeeae287c029d032c04e559a1114120acac118a44262947ce6302b4e1",
+    "model-bootstrap-010/manifest.json": "d220054410dec7ee7b2edcfd5cb247101c8571bfa81692f06d29f23ce403da91",
+    "model-bootstrap-010/model-listing.json": "d3d183aec2d2554de0e9a393214d0a63552d5f352da11cf4c7a980a34542f964",
+    "model-bootstrap-010/model-loaded.json": "833a72359e3378d4ead7cf7befc550984df826740cf2975fc992972c6adc60a4",
+    "model-bootstrap-010/model-tags.json": "9476d1ecf72b9182a2e1d09bd68d71cf901ce012b7bbce51729440182ee090a5",
+    "model-bootstrap-010/provider-stopped.json": "bf5c456e76fd9a1a3c5d8efc4b025a764c1d1dc2a02d7b1b8aad9c280ee4cd34",
+    "model-bootstrap-010/request-after.json": "b7876c5475734081d0640bca2e648f58424161c3ef6bd8245fa0be512876bf10",
+    "model-bootstrap-010/request-before.json": "ad59bea36fceeb1e2ab1e33a915fa367d8ae2c5c93bf6b02d3f7d0b8244e3160",
+    "model-bootstrap-010/request-provider-stopped.json": "9d9f9bdd1e9d835b51332781e2ddf9b9386e958ee375a2cc773e7917bd57fb00",
+    "model-bootstrap-010/resource-snapshot.jsonl": "d3d3176a5b1ff7ccc2279da33e2ae13ff8fb04adabd03a5984331412b25b72f3",
+    "model-bootstrap-010/server-version.json": "b049c2c9ecc204832aa915b1b8332c6e482fa8eed2cbb33ab031cdc1f67c2fed",
+    "model-bootstrap-011/manifest.json": "a7dc31b34188af44c1685fba00a2e3f6288bcabd2c5abdae178b5838b3ca3e92",
+    "model-bootstrap-011/model-listing.json": "a906eb750201881321cdf5118578ff815842bc49b2953b904fed377661e80557",
+    "model-bootstrap-011/model-loaded.json": "bce9f888b06032d5b75909dc22f87767436910ce6492f58ac79d40b1e2a1c9a1",
+    "model-bootstrap-011/model-tags.json": "08c004609ebc70cd14426aca23a6898152102545498826c6466ea13b1bc37745",
+    "model-bootstrap-011/provider-stopped.json": "bf5c456e76fd9a1a3c5d8efc4b025a764c1d1dc2a02d7b1b8aad9c280ee4cd34",
+    "model-bootstrap-011/request-after.json": "9c0c08a60c62a1f2585a76a31033ce5f2ca0dc8cd8356c2278eb5c4027ced067",
+    "model-bootstrap-011/request-before.json": "afdcccbcd0304d5b6d13592ebcda3d6d19d4e22f57b997508cbac53b6acc8d24",
+    "model-bootstrap-011/request-provider-stopped.json": "3f8fcc2e1665f1a623a179142165cf65c54cde374ff56d21e85a78b7cefca2d7",
+    "model-bootstrap-011/resource-snapshot.jsonl": "5c88e33b544a6c23dc281e674d82dfec2421bb26d461bf63b997f0ac32826b88",
+    "model-bootstrap-011/server-version.json": "b049c2c9ecc204832aa915b1b8332c6e482fa8eed2cbb33ab031cdc1f67c2fed",
+    "model-bootstrap-012/manifest.json": "06c7a434af81fe1612b05433e49fc7ce69f2bdbdf6092bb88256f175bbc7db49",
+    "model-bootstrap-012/manual-retained-request.json": "0a7df9a9a12b3b01d02b19a54bef24b76c2685eabb0615515c15c3fde6f27f2b",
+    "model-bootstrap-012/model-listing.json": "c1357528f9c987ba3a3084dacf94b358bf662d286bf232ad31a7665149f50cb9",
+    "model-bootstrap-012/model-loaded.json": "e221c0df052e0dcbf18c6cc2630a9374f945683645efc97d824083bddfbb66eb",
+    "model-bootstrap-012/model-tags.json": "9877081d43e9ed92d13003613f2986df59ee9b16643e745e93eccd1295069661",
+    "model-bootstrap-012/provider-stopped.json": "bf5c456e76fd9a1a3c5d8efc4b025a764c1d1dc2a02d7b1b8aad9c280ee4cd34",
+    "model-bootstrap-012/request-after.json": "0d2e433f42e7e300e85d76dc6a541505a0f0efe8fb2758abae0fc9fb910ffff7",
+    "model-bootstrap-012/request-before.json": "8a3170cbe47ee2cae2c55dbb26a44762592a73251bab65b489d41823d833b75e",
+    "model-bootstrap-012/request-provider-stopped.json": "af032a49ea98d1d39444c7b9a47fb1fef365bd9c98549a18670b1e44413e7f29",
+    "model-bootstrap-012/resource-snapshot.jsonl": "3a80b1d343c51899f4fcfb501918f0e81150f087896cf61db9b43fa2625300c0",
+    "model-bootstrap-012/server-version.json": "b049c2c9ecc204832aa915b1b8332c6e482fa8eed2cbb33ab031cdc1f67c2fed",
+    "planner-live-012/manifest.json": "a9d6f4fe86512b181bb5452c56027f068371cd06d1b39d05bf992f76c0ef263f",
+    "planner-live-012/output.json": "7f86b61282b734059f2aab089d38c14035b49ea08a31cfb8fc060646cb73afc9",
+    "python31216-advisory-query.json": "d3e74a8c596acecdaa1a06704f3805e63534a657f228f592c0065bce648f0bce",
+    "python31216-base-image.json": "94ca89f37e502c11417bdbbbfd963c3c21ccaa7c7429ce8155c4bdb4139bb8dd",
+    "python31216-dependency-inventory.json": "47e96b936d910730f76e4b4c36a0bae3514db75e0f285813b638711ab4a3515e",
+    "python31216-walkthroughs.json": "5317621bffcb84e6a4b40e663b2bc6f0a26f88d77eb3a9b2d015de782a73c908",
+    "README.md": "aa6d54e608ec2fd952e1cd01173ec67f8c26f24a203d4247f2e28a0be9b04b8c",
+    "runbook-live-006/manifest.json": "bf779ac389a3ccee3cab84e86661742c8d31171fc326c695f9ab5b5d9681fe4c",
+    "runbook-live-006/output.json": "393fee566a046ae5f548f9980551c79b0c9422d37980d88d8f622a97f2c07ab3",
+    "runbook-live-007/manifest.json": "e18a2ad8cea9ee12f31745ebfbd68f82fab8647d05400b0e604f2d584d79a704",
+    "runbook-live-007/output.json": "7a30df2137af92c951734917f0ddac5768726d263fa6a3532990cb1b9b051969",
+    "software-and-walkthroughs.json": "a12b18ef329a9f70d29ec14e8cc5bf67ec2dbe2e0005f0d50f9488832be44b98"
+  },
+  "starter_runs": [
+    "model-bootstrap-010",
+    "model-bootstrap-011",
+    "model-bootstrap-012"
+  ]
+}

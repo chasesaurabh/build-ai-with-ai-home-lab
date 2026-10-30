@@ -23,10 +23,10 @@ class StubAdapter:
     def ready(self) -> bool:
         return self.is_ready
 
-    def plan(self, question: str, service: str) -> dict[str, Any]:
+    def plan(self, question: str, service: str, *, timeout_seconds: float | None = None) -> dict[str, Any]:
         return {"calls": [{"tool": "get_service_status", "service": service, "limit": 5}]}
 
-    def diagnose(self, question: str, service: str, results: list[Any]) -> dict[str, Any]:
+    def diagnose(self, question: str, service: str, results: list[Any], *, timeout_seconds: float | None = None) -> dict[str, Any]:
         return {
             "summary": "The simulated service status provides evidence for a human-reviewed diagnosis.",
             "evidence_ids": [results[0].evidence_id],
@@ -38,7 +38,7 @@ class RaisingAdapter(StubAdapter):
         super().__init__(ready=False)
         self.error = error
 
-    def plan(self, question: str, service: str) -> dict[str, Any]:
+    def plan(self, question: str, service: str, *, timeout_seconds: float | None = None) -> dict[str, Any]:
         raise self.error
 
 

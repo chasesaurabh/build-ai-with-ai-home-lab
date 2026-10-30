@@ -1,0 +1,305 @@
+{
+  "checked_utc": "2026-10-30T17:11:40.170915+00:00",
+  "database": "OSV API",
+  "documentation": "https://google.github.io/osv.dev/post-v1-querybatch/",
+  "scope": "Known Python package/version advisories only. Not OS image audit or proof of absence of vulnerabilities.",
+  "packages": [
+    {
+      "package": {
+        "name": "Pygments",
+        "ecosystem": "PyPI"
+      },
+      "version": "2.21.0",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent",
+        "project-4-sandboxed-change-planner"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "annotated-doc",
+        "ecosystem": "PyPI"
+      },
+      "version": "0.0.5",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "annotated-types",
+        "ecosystem": "PyPI"
+      },
+      "version": "0.8.0",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent",
+        "project-4-sandboxed-change-planner"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "anyio",
+        "ecosystem": "PyPI"
+      },
+      "version": "4.15.1",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "click",
+        "ecosystem": "PyPI"
+      },
+      "version": "8.5.0",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "fastapi",
+        "ecosystem": "PyPI"
+      },
+      "version": "0.141.1",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "h11",
+        "ecosystem": "PyPI"
+      },
+      "version": "0.16.0",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "httpcore2",
+        "ecosystem": "PyPI"
+      },
+      "version": "2.13.0",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "httpx2",
+        "ecosystem": "PyPI"
+      },
+      "version": "2.13.0",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "idna",
+        "ecosystem": "PyPI"
+      },
+      "version": "3.20",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "iniconfig",
+        "ecosystem": "PyPI"
+      },
+      "version": "2.3.1",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent",
+        "project-4-sandboxed-change-planner"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "packaging",
+        "ecosystem": "PyPI"
+      },
+      "version": "26.3",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent",
+        "project-4-sandboxed-change-planner"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "pip",
+        "ecosystem": "PyPI"
+      },
+      "version": "26.2.1",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent",
+        "project-4-sandboxed-change-planner"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "pluggy",
+        "ecosystem": "PyPI"
+      },
+      "version": "1.7.0",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent",
+        "project-4-sandboxed-change-planner"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "pydantic",
+        "ecosystem": "PyPI"
+      },
+      "version": "2.13.5",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent",
+        "project-4-sandboxed-change-planner"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "pydantic_core",
+        "ecosystem": "PyPI"
+      },
+      "version": "2.46.5",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent",
+        "project-4-sandboxed-change-planner"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "pytest",
+        "ecosystem": "PyPI"
+      },
+      "version": "9.1.1",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent",
+        "project-4-sandboxed-change-planner"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "starlette",
+        "ecosystem": "PyPI"
+      },
+      "version": "1.10.0",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "truststore",
+        "ecosystem": "PyPI"
+      },
+      "version": "0.10.5",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "typing-inspection",
+        "ecosystem": "PyPI"
+      },
+      "version": "0.4.4",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent",
+        "project-4-sandboxed-change-planner"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "typing_extensions",
+        "ecosystem": "PyPI"
+      },
+      "version": "4.16.0",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent",
+        "project-4-sandboxed-change-planner"
+      ],
+      "vulns": []
+    },
+    {
+      "package": {
+        "name": "uvicorn",
+        "ecosystem": "PyPI"
+      },
+      "version": "0.53.0",
+      "projects": [
+        "project-1-intake-service",
+        "project-2-runbook-assistant",
+        "project-3-readonly-diagnostic-agent"
+      ],
+      "vulns": []
+    }
+  ]
+}

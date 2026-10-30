@@ -1,12 +1,13 @@
-FROM python:3.12.14-slim-trixie AS test
+FROM python:3.12.16-slim-trixie@sha256:8523d6abeb48ceae0b7240d30c5808fc26cb79c1a635bacdf19cf3baecfbec07 AS test
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
 WORKDIR /app
-COPY requirements.txt requirements-dev.txt ./
-RUN python -m pip install --no-cache-dir -r requirements-dev.txt
+COPY requirements.txt requirements-dev.txt constraints.txt ./
+RUN python -m pip install --no-cache-dir --only-binary=:all: pip==26.2.1 \
+    && python -m pip install --no-cache-dir --only-binary=:all: -r requirements-dev.txt
 COPY app ./app
 COPY fixtures ./fixtures
 COPY fixtures-holdout ./fixtures-holdout
@@ -15,7 +16,7 @@ COPY sandbox ./sandbox
 COPY tests ./tests
 CMD ["python", "-m", "pytest", "-q"]
 
-FROM python:3.12.14-slim-trixie AS sandbox-runtime
+FROM python:3.12.16-slim-trixie@sha256:8523d6abeb48ceae0b7240d30c5808fc26cb79c1a635bacdf19cf3baecfbec07 AS sandbox-runtime
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
@@ -23,8 +24,9 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 RUN groupadd --system app && useradd --system --gid app --home-dir /nonexistent --shell /usr/sbin/nologin app
 WORKDIR /app
-COPY requirements.txt ./
-RUN python -m pip install --no-cache-dir -r requirements.txt
+COPY requirements.txt constraints.txt ./
+RUN python -m pip install --no-cache-dir --only-binary=:all: pip==26.2.1 \
+    && python -m pip install --no-cache-dir --only-binary=:all: -r requirements.txt
 COPY app ./app
 COPY sandbox ./sandbox
 RUN chown -R app:app /app

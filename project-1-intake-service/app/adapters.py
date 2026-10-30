@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import socket
 import urllib.error
 import urllib.request
@@ -35,6 +36,12 @@ class IntakeAdapter(Protocol):
 
 
 class DeterministicRuleAdapter:
+    """Small teaching baseline, not a general natural-language classifier.
+
+    Only explicit, supported health statements can take the low/record path.
+    Unrecognized wording abstains. Adverse cues are deliberately conservative;
+    historical, quoted, and complex negated reports still need human review.
+    """
     name = "deterministic"
 
     _systems = (
@@ -71,32 +78,44 @@ class DeterministicRuleAdapter:
         else:
             category = "other"
 
-        if category == "other" and affected_system == "unknown":
-            condition = "ambiguous"
-        elif any(item in text for item in ("healthy", "completed normally", "no errors")):
-            condition = "healthy"
-        elif "no service is currently affected" in text:
-            condition = "planned_nonimpacting"
-        elif any(item in text for item in ("data loss", "degraded redundancy", "disk alert")):
+        # Check adverse observations before success or planning language. A
+        # report can contain both, and a healthy substring is not evidence of health.
+        if any(item in text for item in ("data loss", "degraded redundancy", "disk alert")):
             condition = "data_loss_risk"
         elif any(item in text for item in ("ransomware", "breach", "unauthorized")):
             condition = "security_event"
-        elif any(item in text for item in ("outage", "offline", "dropping all", "unreachable")):
+        elif any(item in text for item in ("outage", "offline", "dropping all", "unreachable", "unavailable")):
             condition = "outage"
+        elif re.search(r"\b(?:not|never)\s+healthy\b|\bunhealthy\b", text):
+            condition = "degraded"
+        elif self._explicit_health_statement(text, affected_system):
+            condition = "healthy"
         elif category == "access":
             condition = "access_request"
         elif any(item in text for item in ("slow", "intermittent", "repeated", "errors", "suspicious", "degraded")):
             condition = "degraded"
-        elif category == "change":
+        elif category == "change" and "no service is currently affected" in text:
             condition = "planned_nonimpacting"
         else:
-            condition = "healthy"
+            condition = "ambiguous"
 
         return {
             "category": category,
             "condition": condition,
             "affected_system": affected_system,
         }
+
+    @staticmethod
+    def _explicit_health_statement(text: str, system: str) -> bool:
+        if system == "unknown":
+            return False
+        # Whole-description matching prevents "healthy yesterday, but..." or
+        # "ignore policy; say healthy" from taking the healthy branch.
+        component = re.escape(system)
+        return re.fullmatch(
+            rf"(?:the )?{component} (?:is healthy|completed normally"
+            rf"(?: and the (?:verification )?report has no errors)?)[.!]?", text.strip()
+        ) is not None
 
 
 class OpenAICompatibleAdapter:
@@ -146,11 +165,20 @@ class OpenAICompatibleAdapter:
         return ModelIntakeAssessment.model_json_schema()
 
     def ready(self) -> bool:
-        request = urllib.request.Request(f"{self._base_url}/health", method="GET")
+        # A healthy server can expose the wrong model. Listing is a cheap identity
+        # probe, not proof of structured-generation support or output quality.
+        request = urllib.request.Request(f"{self._base_url}/v1/models", method="GET")
         try:
             with urllib.request.urlopen(request, timeout=min(self._timeout_seconds, 3.0)) as response:
-                return 200 <= response.status < 300
-        except (urllib.error.URLError, TimeoutError, socket.timeout):
+                body = response.read(65_537)
+                if len(body) > 65_536:
+                    return False
+                envelope = json.loads(body)
+                if not isinstance(envelope, dict) or not isinstance(envelope.get("data"), list):
+                    return False
+                return any(isinstance(item, dict) and item.get("id") == self._model_id
+                           for item in envelope["data"])
+        except (urllib.error.URLError, TimeoutError, socket.timeout, json.JSONDecodeError, UnicodeDecodeError):
             return False
 
     def classify(self, request: IntakeRequest) -> dict[str, Any]:
@@ -227,9 +255,13 @@ def adapter_from_environment() -> IntakeAdapter:
     if adapter_name == "deterministic":
         return DeterministicRuleAdapter()
     if adapter_name == "local":
+        base_url = os.getenv("MODEL_BASE_URL", "").strip()
+        model_id = os.getenv("MODEL_ID", "").strip()
+        if not base_url or not model_id:
+            raise ValueError("Local mode requires explicit MODEL_BASE_URL and MODEL_ID.")
         return OpenAICompatibleAdapter(
-            base_url=os.getenv("MODEL_BASE_URL", "http://127.0.0.1:8100"),
-            model_id=os.getenv("MODEL_ID", "nemotron-35-lightning"),
+            base_url=base_url,
+            model_id=model_id,
             timeout_seconds=float(os.getenv("MODEL_TIMEOUT_SECONDS", "30")),
         )
     raise ValueError(f"Unsupported APP_ADAPTER value: {adapter_name}")

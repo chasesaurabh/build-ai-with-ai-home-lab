@@ -28,3 +28,19 @@ Inspect the requested service, tool name, arguments, duplicate calls, budget, an
 
 Treat the package, schema, and environment as separate layers. Inspect the container error, validate the complete candidate, and restore the recorded baseline. Do not weaken validation merely to make the candidate start.
 
+
+## The walkthrough fails before starting
+
+Use PowerShell 7 (`pwsh`), verify Docker is running in Linux-container mode, and
+choose a free loopback port using `-Port`. If the script reports that its named
+container already exists, inspect that exact container before removing it; do
+not run a broad container cleanup. A first-run model-readiness 503 is expected
+when no model was configured. The no-model route should still behave as the
+script specifies; it is not a fallback masquerading as a successful model call.
+
+## Dependency resolution fails
+
+Keep `constraints.txt` beside the requirements files. An unavailable wheel or
+conflicting pin is a build failure, not permission to install an arbitrary newer
+dependency. See [dependencies](dependencies.md) for the recorded platform and
+the update/retest procedure.
