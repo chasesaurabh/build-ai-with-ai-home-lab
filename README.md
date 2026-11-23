@@ -57,7 +57,7 @@ The book manuscript, cover, diagrams, screenshots, review reports, and publishin
 
 ## Historical first-edition material
 
-The [first-edition Amazon destination](https://www.amazon.com/dp/B0HKGGXJCF) identifies the older book, not this revised code. A new book destination must be verified separately before linking it here.
+The second edition is available on Amazon in [Kindle](https://www.amazon.com/dp/B0HPZGYR5N) and [paperback](https://www.amazon.com/dp/B0HPZ6BHMQ). Use the code reference printed in your edition; earlier tags remain preserved.
 
 The [preserved October 26 deterministic evaluation image](docs/images/m3-preview.jpg) is a first-edition Windows/CPython 3.12.14 observation: 12/12 fixed development cases in that run. It is not an application UI, model result or revised-adapter score. Current and historical outcomes remain separate in [evidence and reproduction](docs/evidence-and-reproduction.md).
 
